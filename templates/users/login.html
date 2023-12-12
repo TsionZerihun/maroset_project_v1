@@ -1,0 +1,43 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+
+<br>
+<br>
+<h2>SIGN IN or REGISTER</h2>
+
+
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		
+	</div>
+	<div class="form-container sign-in-container">
+		<form method="POST" action="#">
+		 {% csrf_token %}
+			<h1>Sign in</h1>
+			<br>
+			<span>use your account</span>
+			<input type="email" name="email" placeholder="Email" />
+			<input type="password" name="password" placeholder="Password" />
+			<a href="#">Forgot your password?</a>
+			<button> Sign In</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			
+			<div class="overlay-panel overlay-right">
+				<h1>Welcome!</h1>
+				<p>Enter your personal details and start journey with us</p>
+				<button class="ghost" id="signUp"><a href="{% url 'register-applicant' %}"> Sign Up</a></button>
+
+			</div>
+		</div>
+	</div>
+ </div>
+
+      
+
+
+
+{% endblock content %}
