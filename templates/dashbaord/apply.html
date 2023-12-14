@@ -1,0 +1,307 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if request.user.is_applicant %}
+{% if not request.user.has_resume %}
+<div class="alert alert-danger" role="alert">
+    <b>You need to create resume before applying to jobs. create one from <a href="{% url 'update-resume' %}">here</a></b>
+  </div>
+  {% elif request.user.has_resume %}
+
+
+<div class="card shadow border-0 mb-7">
+    <div class="card-header">
+        <h5 class="mb-0">Applications</h5>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover table-nowrap">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Company</th>
+                    <th scope="col">Offer</th>
+                    <th scope="col">jOB Title</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    
+                    <td>
+                        Feb 15, 2023
+                    </td>
+                    <td>
+                        <img alt="..." src="https://bytewebster.com/img/logo.png" class="avatar avatar-xs rounded-circle me-2">
+                        <a class="text-heading font-semibold" href="">
+                            Bytewebster
+                        </a>
+                    </td>
+                    <td>
+                        $3.500
+                    </td>
+                    <td>
+                        <span class="">
+                            <i class="bg-success"></i>Software Engineer
+                        </span>
+                    </td>
+                    <td class="text-end">
+                        <a href="#" class="btn btn-sm btn-neutral marosetbtn">Apply Now</a>
+                        &nbsp;
+                        <a href="#" class="btn btn-sm btn-outline-danger">Report Job</a>
+
+                      
+                        
+                    </td>
+                </tr>
+                <tr>
+                    
+                    <td>
+                        Apr 15, 2023
+                    </td>
+                    <td>
+                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-2.png" class="avatar avatar-xs rounded-circle me-2">
+                        <a class="text-heading font-semibold" href="#">
+                            Netguru
+                        </a>
+                    </td>
+                    <td>
+                        $2.750
+                    </td>
+                    <td>
+                        <span class="">
+                            <i class="bg-success"></i>Software Engineer
+                        </span>
+                    </td>
+                    <td class="text-end">
+                        <a href="#" class="btn btn-sm btn-neutral marosetbtn">Apply Now</a>
+                        &nbsp;
+                        <a href="#" class="btn btn-sm btn-outline-danger">Report Job</a>
+                    </td>
+                </tr>
+                <tr>
+                   
+                    <td>
+                        Mar 20, 2023
+                    </td>
+                    <td>
+                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-3.png" class="avatar avatar-xs rounded-circle me-2">
+                        <a class="text-heading font-semibold" href="#">
+                            Figma
+                        </a>
+                    </td>
+                    <td>
+                        $4.200
+                    </td>
+                    <td>
+                        <span class="">
+                            <i class="bg-success"></i>Software Engineer
+                        </span>
+                    </td>
+                    <td class="text-end">
+                        <a href="#" class="btn btn-sm btn-neutral marosetbtn">Apply Now</a>
+                        &nbsp;
+                        <a href="#" class="btn btn-sm btn-outline-danger">Report Job</a>
+                    </td>
+                </tr>
+                <tr>
+                    
+                    <td>
+                        Feb 15, 2023
+                    </td>
+                    <td>
+                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-4.png" class="avatar avatar-xs rounded-circle me-2">
+                        <a class="text-heading font-semibold" href="#">
+                            Mailchimp
+                        </a>
+                    </td>
+                    <td>
+                        $3.500
+                    </td>
+                    <td>
+                        <span class="">
+                            <i class="bg-success"></i>Software Engineer
+                        </span>
+                    </td>
+                    <td class="text-end">
+                        <a href="#" class="btn btn-sm btn-neutral marosetbtn">Apply Now</a>
+                        &nbsp;
+                        <a href="#" class="btn btn-sm btn-outline-danger">Report Job</a>
+                    </td>
+                </tr>
+                <tr>
+                    
+                    <td>
+                        Apr 10, 2023
+                    </td>
+                    <td>
+                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-5.png" class="avatar avatar-xs rounded-circle me-2">
+                        <a class="text-heading font-semibold" href="#">
+                            Webpixels
+                        </a>
+                    </td>
+                    <td>
+                        $1.500
+                    </td>
+                    <td>
+                        <span class="">
+                            <i class="bg-success"></i>Software Engineer
+                        </span>
+                    </td>
+                    <td class="text-end">
+                        <a href="#" class="btn btn-sm btn-neutral marosetbtn">Apply Now</a>
+                        &nbsp;
+                        <a href="#" class="btn btn-sm btn-outline-danger">Report Job</a>
+                    </td>
+                </tr>
+                <tr>
+                    
+                    <td>
+                        Feb 15, 2023
+                    </td>
+                    <td>
+                        <img alt="..." src="https://bytewebster.com/img/logo.png" class="avatar avatar-xs rounded-circle me-2">
+                        <a class="text-heading font-semibold" href="">
+                            Bytewebster
+                        </a>
+                    </td>
+                    <td>
+                        $3.500
+                    </td>
+                    <td>
+                        <span class="">
+                            <i class="bg-success"></i>Software Engineer
+                        </span>
+                    </td>
+                    <td class="text-end">
+                        <a href="#" class="btn btn-sm btn-neutral marosetbtn">Apply Now</a>
+                        &nbsp;
+                        <a href="#" class="btn btn-sm btn-outline-danger">Report Job</a>
+                    </td>
+                </tr>
+                <tr>
+                    
+                    <td>
+                        Apr 15, 2023
+                    </td>
+                    <td>
+                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-2.png" class="avatar avatar-xs rounded-circle me-2">
+                        <a class="text-heading font-semibold" href="#">
+                            Netguru
+                        </a>
+                    </td>
+                    <td>
+                        $2.750
+                    </td>
+                    <td>
+                        <span class="">
+                            <i class="bg-success"></i>Software Engineer
+                        </span>
+                    </td>
+                    <td class="text-end">
+                        <a href="#" class="btn btn-sm btn-neutral marosetbtn">Apply Now</a>
+                        &nbsp;
+                        <a href="#" class="btn btn-sm btn-outline-danger">Report Job</a>
+                    </td>
+                </tr>
+                <tr>
+                    
+                    <td>
+                        Mar 20, 2023
+                    </td>
+                    <td>
+                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-3.png" class="avatar avatar-xs rounded-circle me-2">
+                        <a class="text-heading font-semibold" href="#">
+                            Figma
+                        </a>
+                    </td>
+                    <td>
+                        $4.200
+                    </td>
+                    <td>
+                        <span class="">
+                            <i class="bg-success"></i>Software Engineer
+                        </span>
+                    </td>
+                    <td class="text-end">
+                        <a href="#" class="btn btn-sm btn-neutral marosetbtn">Apply Now</a>
+                        &nbsp;
+                        <a href="#" class="btn btn-sm btn-outline-danger">Report Job</a>
+                    </td>
+                </tr>
+                <tr>
+                   
+                    <td>
+                        Feb 15, 2023
+                    </td>
+                    <td>
+                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-4.png" class="avatar avatar-xs rounded-circle me-2">
+                        <a class="text-heading font-semibold" href="#">
+                            Mailchimp
+                        </a>
+                    </td>
+                    <td>
+                        $3.500
+                    </td>
+                    <td>
+                        <span class="">
+                            <i class="bg-success"></i>Software Engineer
+                        </span>
+                    </td>
+                    <td class="text-end">
+                        <a href="#" class="btn btn-sm btn-neutral marosetbtn">Apply Now</a>
+                        &nbsp;
+                        <a href="#" class="btn btn-sm btn-outline-danger">Report Job</a>
+                    </td>
+                </tr>
+                <tr>
+                    
+                    <td>
+                        Apr 10, 2023
+                    </td>
+                    <td>
+                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-5.png" class="avatar avatar-xs rounded-circle me-2">
+                        <a class="text-heading font-semibold" href="#">
+                            Webpixels
+                        </a>
+                    </td>
+                    <td>
+                        $1.500
+                    </td>
+                    <td>
+                        <span class="">
+                            <i class="bg-success"></i>Software Engineer
+                        </span>
+                    </td>
+                    <td class="text-end">
+                        <a href="#" class="btn btn-sm btn-neutral marosetbtn">Apply Now</a>
+                        &nbsp;
+                        <a href="#" class="btn btn-sm btn-outline-danger">Report Job</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer border-0 py-5">
+        <span class="text-muted text-sm">Showing 10 items out of 250 results found</span>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link disabled" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link bg-info text-white" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </nav>
+    </div>
+</div>
+{% endif %}
+
+
+{% elif request.user.is_recruiter %}
+    <div>
+        <h1>recruiter page</h1>
+    </div>
+{% endif %}
+
+
+{% endblock content %}

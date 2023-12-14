@@ -1,0 +1,259 @@
+{% extends 'resume/base.html' %}
+{% load widget_tweaks %}
+
+
+
+
+
+{% block content %}
+<div class="container py-5">
+
+    <!-- For demo purpose -->
+   
+ 
+
+  <div class="container py-5">
+
+      <!-- For demo purpose -->
+      <div class="row mb-4">
+        <div class="col-lg-8 mx-auto text-center">
+          <h1 class="display-4">Resume</h1>
+        </div>
+      </div>
+      <!-- End -->
+    
+    
+      <div class="row">
+        <div class="col-lg-7 mx-auto">
+          <div class="bg-white rounded-lg shadow-sm p-5">
+            <!-- Resume -->
+            <ul role="tablist" class="nav bg-light nav-pills rounded-pill nav-fill mb-3">
+              <li class="nav-item">
+                <a data-toggle="pill" href="#nav-tab-card" class="nav-link active rounded-pill">
+                  Personal Information
+                </a>
+              </li>
+              <li class="nav-item">
+                <a data-toggle="pill" href="#nav-tab-paypal" class="nav-link rounded-pill">
+                  Education
+                </a>
+              </li>
+              <li class="nav-item">
+                <a data-toggle="pill" href="#nav-tab-bank" class="nav-link rounded-pill">
+                  Experience
+                </a>
+              </li>
+              
+            </ul>
+            <!-- End -->
+    
+    
+            <!-- Personal Information -->
+            <div class="tab-content">
+    
+              <!-- credit card info-->
+              <div id="nav-tab-card" class="tab-pane fade show active">
+                <form method="POST" role="form">
+                  {% csrf_token %}
+
+                  <div class="form-group">
+                    <label for="username">Full name</label>
+                    {% render_field form.first_name class="form-control" placeholder="full name"  %}
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEmail4">Email</label>
+                    {% render_field form.sur_name class="form-control" placeholder="sur name"  %}
+                  </div>
+                  <div class="form-group">
+                    <label for="typePhone">Phone number</label>
+                    {% render_field form.phone_number class="form-control" placeholder="phone number"  %}
+                  </div>
+                  <div class="form-group">
+                    <label for="Role">Role</label>
+                    {% render_field form.role class="form-control" placeholder="role"  %}
+                  </div>
+                  <div class="form-group">
+                    <label for="Role">Motivation Letter</label>
+                    {% render_field form.motivation class="form-control" placeholder="motivation"  %}
+                  </div>
+                  
+                  <!--save-->
+                  <button type="submit" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm"> Save  </button>
+                  <a href="{% url 'apply' %}" type="button" class="subscribe btn btn-secondary btn-block rounded-pill shadow-sm"> Back  </a>
+
+                </form>
+              </div>
+              <!-- End -->
+    
+              <!-- Education info -->
+              <div id="nav-tab-paypal" class="tab-pane fade">
+                <form method="POST" role="form">
+                   {% csrf_token %}
+                 
+                  <!--qualification-->
+                  <div class="form-group">
+                    <label for="cardNumber">Qualification </label>
+                    {% render_field form.qualification class="form-control" placeholder="qualification"  %}
+                      </div>
+                    </div>
+                  </div>
+                  <!--university-->
+                  <div class="form-group">
+                    <label for="cardNumber">University </label>
+                    <div class="input-group">
+                      {% render_field form.university class="form-control" placeholder="university"  %}
+                      <div class="input-group-append">
+                       
+                      </div>
+                    </div>
+                  </div>
+                  <!--start-date-finish-date-->
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label><span class="hidden-xs">Start Date</span></label>
+                        <div class="input-group">
+                          {% render_field form.university_start_date class="form-control" placeholder="start date"  %}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group mb-4">
+                        <label data-toggle="tooltip" title="Three-digits code on the back of your card">Finish Date</label>
+                        <div class="input-group">
+                          {% render_field form.university_end_date class="form-control" placeholder="end date"  %}
+
+                        </div>
+                      </div>
+                    </div>
+    
+    
+    
+                  </div>
+                   <!--Description-->
+                   <div class="form-group">
+                    <label for="cardNumber">Description(optional) </label>
+                    <div class="input-group">
+                      {% render_field form.university_description class="form-control" placeholder="university description"  %}
+                      <div class="input-group-append">
+                        <span class="input-group-text text-muted">
+                                                   
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <!--save-->
+                  <button type="submit" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm"> Save  </button>
+                  <a href="{% url 'apply' %}" type="button" class="subscribe btn btn-secondary btn-block rounded-pill shadow-sm"> Back  </a>
+
+                </form>
+              </div>
+              <!-- End -->
+    
+              <!-- bank transfer info -->
+              <div id="nav-tab-bank" class="tab-pane fade">
+                <form method="POST" role="form">
+                  {% csrf_token %}
+                  <!--Exeperience-->
+                  <div class="form-group">
+                    <label for="cardNumber">Title </label>
+                    <div class="input-group">
+                      {% render_field form.experience_title class="form-control" placeholder="experience title"  %}
+                      <div class="input-group-append">
+                        <span class="input-group-text text-muted">
+                                                   
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <!--university-->
+                  <div class="form-group">
+                    <label for="cardNumber">Company </label>
+                    <div class="input-group">
+                      {% render_field form.experience_company class="form-control" placeholder="experience company" %}
+                      <div class="input-group-append">
+                        <span class="input-group-text text-muted">
+                                                   
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <!--start-date-finish-date-->
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label><span class="hidden-xs">Start Date</span></label>
+                        <div class="input-group">
+                          {% render_field form.experience_start class="form-control" placeholder="experience start" %}
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group mb-4">
+                        <label data-toggle="tooltip" title="Three-digits code on the back of your card">Finish Date</label>
+                        <div class="input-group">
+                          {% render_field form.experience_end class="form-control" placeholder="experience end" %}
+
+                        </div>
+                      </div>
+                    </div>
+    
+    
+    
+                  </div>
+                   <!--Description-->
+                   <div class="form-group">
+                    <label for="cardNumber">Description(optional) </label>
+                    <div class="input-group">
+                      {% render_field form.experience_description class="form-control" placeholder="experience descripiton" %}
+                      <div class="input-group-append">
+                        <span class="input-group-text text-muted">
+                                                   
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <!--File-upload-->
+                  <div class="mb-3">
+                    <label for="formFile" class="form-label">Upload CV</label>
+                    <input class="form-control" type="file" id="formFile">
+                  </div>
+                  <!--save-->
+                   <!--Portfolio-upload-->
+                   <div class="mb-3">
+                    <label for="formFile" class="form-label">Upload Portfolio</label>
+                    <input class="form-control" type="file" id="formFile">
+                  </div>
+                  <!--save-->
+                  <button type="submit" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm"> Save  </button>
+                  <a href="{% url 'apply' %}" type="button" class="subscribe btn btn-secondary btn-block rounded-pill shadow-sm"> Finish  </a>
+
+                </form>
+              </div>
+              <!-- End -->
+                
+            <!-- End -->
+    
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+ <!-- Back to Top -->
+</div>
+
+
+
+
+
+
+<!-- Back to Top -->
+</div>
+
+{% endblock content %}

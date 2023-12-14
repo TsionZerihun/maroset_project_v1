@@ -1,306 +1,178 @@
 {% extends 'base.html' %}
 
+
+
+{% block css %}
+{% load static %}
+
+    
+ <!-- User-Profile Stylesheet -->
+ <link href="https://fonts.googleapis.com/css?family=Mukta:300,400,500,600,700&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="{% static 'assets/vendors/@fortawesome/fontawesome-free/css/all.min.css' %}">
+ <link rel="stylesheet" href="{% static 'assets/css/live-resume.css' %}">
+{% endblock %}
+
+
+
+
 {% block content %}
 {% if request.user.is_applicant %}
+<div class="bg-light">
+    <nav class="collapsible-nav" id="collapsible-nav">
+        <br>
+        <br>
+        <a href="#" class="nav-link">RESUME</a>
+        <a href="portfolio.html" class="nav-link">PORTFOLIO</a>
+       
+    </nav>
+</div>
+  <div px-6 class=" px-6 content-wrapper">
+    <aside>
+        <div class="profile-img-wrapper">
+            <img src="../assets/images/Profile.png" alt="profile">
+        </div>
+        <h1 class="profile-name">Jhon Doe</h1>
+        <div class="text-center">
+            <span class="badge badge-white badge-pill profile-designation">UI / UX Designer</span>
+        </div>
+       
+        <div class="widget">
+            <h5 class="widget-title">personal information</h5>
+            <div class="widget-content">
+                <p>Role : Designer</p>
+                <p>Full Name: Jhon Doe</p>
+                <p>Email: test@gmail.com</p>
+                <p>PHONE : +251 911 000 000</p>
+                <button class="btn btn-download-cv btn-primary rounded-pill"> <img src="" alt=""
+                    class="btn-img">DOWNLOAD CV </button>
+            </div>
+        </div>
+        <div class="widget card">
+            <div class="card-body">
+                <div class="widget-content">
+                    <h5 class="widget-title card-title">LANGUAGES</h5>
+                    <p>English : fluent</p>
+                    <p>Spanish : fluent</p>
+                    <p>Amahric : native</p>
+                    <span class="badge badge-primary">Add Language <i class="fa fa-plus"></i></span>
 
-    <div class="card shadow border-0 mb-7">
-    <div class="card-header">
-        <h5 class="mb-0">Applications</h5>
-    </div>
-    <div class="table-responsive">
-        <table class="table table-hover table-nowrap">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">Date</th>
-                    <th scope="col">Company</th>
-                    <th scope="col">Offer</th>
-                    <th scope="col">Status</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    
-                    <td>
-                        Feb 15, 2023
-                    </td>
-                    <td>
-                        <img alt="..." src="https://bytewebster.com/img/logo.png" class="avatar avatar-xs rounded-circle me-2">
-                        <a class="text-heading font-semibold" href="https://www.bytewebster.com/">
-                            Bytewebster
-                        </a>
-                    </td>
-                    <td>
-                        $3.500
-                    </td>
-                    <td>
-                        <span class="badge badge-lg badge-dot">
-                            <i class="bg-success"></i>Applied
-                        </span>
-                    </td>
-                    <td class="text-end">
-                        <a href="../job-detail.html" class="btn btn-sm btn-neutral marosetbtn">Job Detail</a>
-                        <button type="button" onclick="showSweetAlert()" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                            <i class="bi bi-trash"></i
-                                >
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    
-                    <td>
-                        Apr 15, 2023
-                    </td>
-                    <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-2.png" class="avatar avatar-xs rounded-circle me-2">
-                        <a class="text-heading font-semibold" href="#">
-                            Netguru
-                        </a>
-                    </td>
-                    <td>
-                        $2.750
-                    </td>
-                    <td>
-                        <span class="badge badge-lg badge-dot">
-                            <i class="bg-warning"></i>Incomplete
-                        </span>
-                    </td>
-                    <td class="text-end">
-                        <a href="../job-detail.html" class="btn btn-sm btn-neutral marosetbtn">Job Detail</a>
-                        <button type="button" onclick="showSweetAlert()" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
+                </div>
+            </div>
+        </div>
+        <div class="widget card">
+            <div class="card-body">
+                <div class="widget-content">
+                    <h5 class="widget-title card-title">Skills</h5>
+                    <p>Designer</p>
+                    <p>Project Management</p>
+                    <p>Writting</p>
+                    <p>Team Leader</p>
+                    <span class="badge badge-primary">Add Skills <i class="fa fa-plus"></i></span>
+
+                </div>
+
+            </div>
+        </div>
+    </aside>
+    <main class="maincv">
+        <section class="intro-section">
+            <h2 class="section-title">About Me</h2>
+            <p>I'm Creative Director and UI/UX Designer from Sydney, Australia, working in web development and print
+                media. I enjoy turning complex problems into simple, beautiful and intuitive designs. My job is to
+                build your website so that it is functional and user-friendly but at the same time attractive.
+                Moreover, I add personal touch to your product and make sure that is eye-catching and easy to use.
+                My aim is to bring across your message and identity in the most creative way. I created web design
+                for many famous brand companies.</p>
+
+        </section>
+        <section class="resume-section">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="section-title">EDUCATION</h2>
+                    <ul class="time-line">
+                        <li class="time-line-item">
+                            <span class="badge badge-primary">1998 - 2005</span>
+                            <h6 class="time-line-item-title">Master In Computer Science</h6>
+                            <p class="time-line-item-subtitle">MASTER, UNIVERSITY</p>
+                            <p class="time-line-item-content">Mauris magna sapien, pharetra consectetur fringilla
+                                vitae, interdum sed tortor.</p>
+                        </li>
+                        <li class="time-line-item">
+                            <span class="badge badge-primary">1995 - 1998</span>
+                            <h6 class="time-line-item-title">Studied at Harvard University</h6>
+                            <p class="time-line-item-subtitle">UNIVERSITY</p>
+                            <p class="time-line-item-content">Mauris magna sapien, pharetra consectetur fringilla
+                                vitae, interdum sed tortor.
+                            </p>
+                        </li>
+                        <li class="time-line-item">
+                            <span class="badge badge-primary">1993 - 1995</span>
+                            <h6 class="time-line-item-title">Studied at Oxford University</h6>
+                            <p class="time-line-item-subtitle">UNIVERSITY</p>
+                            <p class="time-line-item-content">Mauris magna sapien, pharetra consectetur fringilla
+                                vitae, interdum sed tortor.
+                            </p>
+                        </li>
+                        <span class="badge badge-primary">Add Education <i class="fa fa-plus"></i></span>
+
+
+                        
+                    </ul>
+                </div>
                 
-                    <td>
-                        Mar 20, 2023
-                    </td>
-                    <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-3.png" class="avatar avatar-xs rounded-circle me-2">
-                        <a class="text-heading font-semibold" href="#">
-                            Figma
-                        </a>
-                    </td>
-                    <td>
-                        $4.200
-                    </td>
-                    <td>
-                        <span class="badge badge-lg badge-dot">
-                            <i class="bg-success"></i>Applied
-                        </span>
-                    </td>
-                    <td class="text-end">
-                        <a href="../job-detail.html" class="btn btn-sm btn-neutral marosetbtn">Job Detail</a>
-                        <button type="button" onclick="showSweetAlert()" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
+                <div class="col-lg-6">
+                    <h2 class="section-title">Experience</h2>
+                    <ul class="time-line">
+                        <li class="time-line-item">
+                            <span class="badge badge-primary">2010 - 2014</span>
+                            <h6 class="time-line-item-title">UI/UX Designer</h6>
+                            <p class="time-line-item-subtitle">Web Agency</p>
+                            <p class="time-line-item-content">Mauris magna sapien, pharetra consectetur fringilla
+                                vitae, interdum sed
+                                tortor.</p>
+                        </li>
+                        <li class="time-line-item">
+                            <span class="badge badge-primary">2008 - 2010</span>
+                            <h6 class="time-line-item-title">Web Designer</h6>
+                            <p class="time-line-item-subtitle">Apple Inc.</p>
+                            <p class="time-line-item-content">Mauris magna sapien, pharetra consectetur fringilla
+                                vitae, interdum sed
+                                tortor.
+                            </p>
+                        </li>
+                        <li class="time-line-item">
+                            <span class="badge badge-primary">2006 - 2008</span>
+                            <h6 class="time-line-item-title">Graphic Designer</h6>
+                            <p class="time-line-item-subtitle">Apple Inc.</p>
+                            <p class="time-line-item-content">Mauris magna sapien, pharetra consectetur fringilla
+                                vitae, interdum sed
+                                tortor.
+                            </p>
+                        </li>
+                        <span class="badge badge-primary">Add Experience <i class="fa fa-plus"></i></span>
+
+                    </ul>
                     
-                    <td>
-                        Feb 15, 2023
-                    </td>
-                    <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-4.png" class="avatar avatar-xs rounded-circle me-2">
-                        <a class="text-heading font-semibold" href="#">
-                            Mailchimp
-                        </a>
-                    </td>
-                    <td>
-                        $3.500
-                    </td>
-                    <td>
-                        <span class="badge badge-lg badge-dot">
-                            <i class="bg-dark"></i>Job Terminated
-                        </span>
-                    </td>
-                    <td class="text-end">
-                        <a href="../job-detail.html" class="btn btn-sm btn-neutral marosetbtn">Job Detail</a>
-                        <button type="button" onclick="showSweetAlert()" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    
-                    <td>
-                        Apr 10, 2023
-                    </td>
-                    <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-5.png" class="avatar avatar-xs rounded-circle me-2">
-                        <a class="text-heading font-semibold" href="#">
-                            Webpixels
-                        </a>
-                    </td>
-                    <td>
-                        $1.500
-                    </td>
-                    <td>
-                        <span class="badge badge-lg badge-dot">
-                            <i class="bg-danger"></i>Job Closed
-                        </span>
-                    </td>
-                    <td class="text-end">
-                        <a href="../job-detail.html" class="btn btn-sm btn-neutral marosetbtn">Job Detail</a>
-                        <button type="button" onclick="showSweetAlert()" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    
-                    <td>
-                        Feb 15, 2023
-                    </td>
-                    <td>
-                        <img alt="..." src="https://bytewebster.com/img/logo.png" class="avatar avatar-xs rounded-circle me-2">
-                        <a class="text-heading font-semibold" href="https://www.bytewebster.com/">
-                            Bytewebster
-                        </a>
-                    </td>
-                    <td>
-                        $3.500
-                    </td>
-                    <td>
-                        <span class="badge badge-lg badge-dot">
-                            <i class="bg-success"></i>Applied
-                        </span>
-                    </td>
-                    <td class="text-end">
-                        <a href="../job-detail.html" class="btn btn-sm btn-neutral marosetbtn">Job Detail</a>
-                        <button type="button" onclick="showSweetAlert()" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    
-                    <td>
-                        Apr 15, 2023
-                    </td>
-                    <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-2.png" class="avatar avatar-xs rounded-circle me-2">
-                        <a class="text-heading font-semibold" href="#">
-                            Netguru
-                        </a>
-                    </td>
-                    <td>
-                        $2.750
-                    </td>
-                    <td>
-                        <span class="badge badge-lg badge-dot">
-                            <i class="bg-warning"></i>Incomplete
-                        </span>
-                    </td>
-                    <td class="text-end">
-                        <a href="../job-detail.html" class="btn btn-sm btn-neutral marosetbtn">Job Detail</a>
-                        <button type="button" onclick="showSweetAlert()" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    
-                    <td>
-                        Mar 20, 2023
-                    </td>
-                    <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-3.png" class="avatar avatar-xs rounded-circle me-2">
-                        <a class="text-heading font-semibold" href="#">
-                            Figma
-                        </a>
-                    </td>
-                    <td>
-                        $4.200
-                    </td>
-                    <td>
-                        <span class="badge badge-lg badge-dot">
-                            <i class="bg-success"></i>Applied
-                        </span>
-                    </td>
-                    <td class="text-end">
-                        <a href="../job-detail.html" class="btn btn-sm btn-neutral marosetbtn">Job Detail</a>
-                        <button type="button" onclick="showSweetAlert()" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                
-                    <td>
-                        Feb 15, 2023
-                    </td>
-                    <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-4.png" class="avatar avatar-xs rounded-circle me-2">
-                        <a class="text-heading font-semibold" href="#">
-                            Mailchimp
-                        </a>
-                    </td>
-                    <td>
-                        $3.500
-                    </td>
-                    <td>
-                        <span class="badge badge-lg badge-dot">
-                            <i class="bg-dark"></i>Incomplete
-                        </span>
-                    </td>
-                    <td class="text-end">
-                        <a href="../job-detail.html" class="btn btn-sm btn-neutral marosetbtn">Job Detail</a>
-                        <button type="button" onclick="showSweetAlert()" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    
-                    <td>
-                        Apr 10, 2023
-                    </td>
-                    <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-5.png" class="avatar avatar-xs rounded-circle me-2">
-                        <a class="text-heading font-semibold" href="#">
-                            Webpixels
-                        </a>
-                    </td>
-                    <td>
-                        $1.500
-                    </td>
-                    <td>
-                        <span class="badge badge-lg badge-dot">
-                            <i class="bg-danger"></i>Closed
-                        </span>
-                    </td>
-                    <td class="text-end">
-                        <a href="../job-detail.html" class="btn btn-sm btn-neutral marosetbtn">Job Detail</a>
-                        <button type="button" onclick="showSweetAlert()" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="card-footer border-0 py-5">
-        <span class="text-muted text-sm">Showing 10 items out of 250 results found</span>
-        <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <li class="page-item"><a class="page-link disabled" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link bg-info text-white" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Negggxt</a></li>
-        </ul>
-        </nav>
-    </div>
-    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+
+            <a href="{% url 'update-resume' %}"  class="btn btn-primary btn-hire-me">Update</a>
+            &nbsp;
+            &nbsp;
+            <a href=""  class="btn btn-primary btn-hire-me">Apply Now</a>
+
+             &nbsp;
+        </section>
+        
+    </main>
+</div>
 
 {% elif request.user.is_recruiter %}
-    <div>
-        <h1>recruiter page</h1>
-    </div>
+
+
+
 {% endif %}
 
 

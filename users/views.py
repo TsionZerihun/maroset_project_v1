@@ -41,7 +41,7 @@ def register_recruiter(request):
                 messages.info(request, 'account created sucessfully!!')
                 return redirect('login')
         else:
-             messages.warning(request, 'something went wrong')
+             messages.warning(request, 'password must contain letter number and special character')
              return redirect('register-recruiter')
     else:
          form = RegisterUserForm()
@@ -59,7 +59,7 @@ def login_user(request):
             login(request, user)
             return redirect('dashboard')
         else:
-             messages.warning(request, 'something went wrong')
+             messages.warning(request, 'Wrong email or password')
              return redirect('login')
      else:
           return render(request, 'users/login.html')

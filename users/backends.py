@@ -13,7 +13,7 @@ class EmailBackend(ModelBackend):
         try:
             user = UserModel.objects.get(Q(username__iexact=username) | Q(email__iexact=username))
         except UserModel.DoesNotExist:
-            UserModel.set_password(password)
+            UserModel().set_password(password)
             return 
         except UserModel.MultipleObjectsReturned:
             user = UserModel.objects.filter(Q(username__iexact=username) | Q(email__iexact=username)).order_by('id').first()

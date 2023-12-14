@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if request.user.is_applicant %}
+<button type="button" class="btn btn-secondary mb-5 px-10 py-3 btn-cool-blues" data-toggle="modal" data-target="#exampleModalCenter">
+  <p>REGISTER COMPANY</p>
+</button>
+
+{% elif request.user.is_recruiter %}
+{% if not request.user.has_company %}
+<div class="alert alert-danger" role="alert">
+  <b>You are seeing this because you have not created any company. create one from <a href="{% url 'update-company' %}">here</a></b>
+</div>
+{% elif request.user.has_company %}
+
+<div>
+  <button type="button" class="btn btn-secondary mb-5 px-10 py-3 btn-cool-blues" data-toggle="modal" data-target="#exampleModalCenter">
+      <a href="{% url 'company' %}">My Company</a>
+    </button>
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    <button type="button" class="btn btn-secondary mb-5 px-10 py-3 btn-cool-blues" data-toggle="modal" data-target="#exampleModalCenter">
+      <a href="{% url 'jobs' %}">My Jobs</a>
+    </button>
+    
+  <!--modal-Body-->
+  <div class="card-header bg-light">
+      <h5 class="mb-0">My Posted Jobs
+         &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; 
+         &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; 
+         <button class="maroset">ADD+</button></h5>
+     
+
+      
+
+      </div>
+      <div class="table-responsive">
+          <table class="table table-hover table-nowrap">
+              <thead class="thead-light">
+                  <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Type</th>
+                      <th scope="col">Posted-jobs</th>
+                      <th scope="col">Action</th>
+                        <th scope="col">Detail</th>
+                        <th scope="col">Delete</th>
+               
+
+
+                      <th></th>
+                  </tr>
+              </thead>
+             
+          </table>
+      </div>
+      <div class="card-footer border-0 py-5">
+          <span class="text-muted text-sm">Showing 10 items out of 250 results found</span>
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link disabled" href="#">Previous</a></li>
+              <li class="page-item"><a class="page-link bg-info text-white" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav>
+      </div>
+  </div>
+</div>
+{% endif %}
+
+{% endif %}
+
+
+{% endblock content %}

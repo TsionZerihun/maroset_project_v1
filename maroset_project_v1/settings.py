@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'dashboard',
     'resume',
     'users',
+    'index',
 
     'widget_tweaks'
 
