@@ -14,7 +14,7 @@ class Resume(models.Model):
     qualification = models.CharField(max_length=100, null=True, blank=True)
     university = models.CharField(max_length=100, null=True, blank=True)
     university_start_date = models.DateField(null=True, blank=True)
-    university_end_date = models.DateField(null=True, blank=True)
+    university_end_date = models.DateField(max_length=1000,null=True, blank=True)
     university_description = models.TextField(null=True, blank=True)
 
 
@@ -22,7 +22,7 @@ class Resume(models.Model):
     experience_company = models.CharField(max_length=100, null=True, blank=True)
     experience_start = models.DateField(null=True, blank=True)
     experience_end = models.DateField(null=True, blank=True)
-    experience_description = models.TextField(null=True, blank=True)
+    experience_description = models.TextField(max_length=1000,null=True, blank=True)
 
 
 

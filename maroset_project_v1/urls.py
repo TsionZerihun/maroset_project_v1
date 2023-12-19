@@ -24,7 +24,13 @@ urlpatterns = [
     path('company/', include('company.urls')),
     path('resume/', include('resume.urls')),
     path('', views.dashboard, name="index"),
-    path('dashboard/', include('dashboard.urls'))
+    path('job-list', views.job_list, name="job-list"),
+    path('job-deatil/<int:pk>/', views.job_detail, name="job-detail"),
+
+
+    path('dashboard/', include('dashboard.urls')),
+    path('job/', include('job.urls'))
+
 
 
 

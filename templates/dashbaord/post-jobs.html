@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load humanize %}
+
 {% block content %}
 {% if request.user.is_applicant %}
 <button type="button" class="btn btn-secondary mb-5 px-10 py-3 btn-cool-blues" data-toggle="modal" data-target="#exampleModalCenter">
@@ -29,7 +31,7 @@
       <h5 class="mb-0">My Posted Jobs
          &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; 
          &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; 
-         <button class="maroset">ADD+</button></h5>
+         <button class="maroset"><a href="{% url 'create-job' %}">ADD+</a></button></h5>
      
 
       
@@ -53,19 +55,20 @@
                   </tr>
               </thead>
               <tbody>
+                {% for job in jobs %}
                   <tr>
                       
                       <td>
-                          Feb 15, 2023
+                          {{job.timestamp|naturaltime}}
                       </td>
                       <td>
                           <img alt="..." src="https://bytewebster.com/img/logo.png" class="avatar avatar-xs rounded-circle me-2">
                           <a class="text-heading font-semibold" href="">
-                              Bytewebster
+                              {{job.company.name}}
                           </a>
                       </td>
                       <td>
-                          Sales
+                          {{job.the_title}}
                       </td>
                       <td>
                           <span class="">
@@ -74,241 +77,36 @@
                       </td>
                       <td>
                           <span class="">
-                              <i class="bg-success"></i>10.000
+                              <i class="bg-success"></i>{{job.salary}}ETB
                           </span>
                       </td>
                       <td>
                               <a href="#"><i class="marosetbtn btn-sm fas fa-comments"></i></a>
                       </td>
+                      {% if job.is_available %}
                       <td>
                           <span class="badge badge-lg badge-dot">
                               <i class="bg-success"></i>Active
                           </span>
-                           
-                      </td>
-                      <td>
-                          <ul class="persons">
-                            <li>
-                              <a href="#">
-                                <img src="../img/person_1.jpg" alt="Person" class="img-fluid">
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <img src="../img/person_2.jpg" alt="Person" class="img-fluid">
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <img src="../img/person_3.jpg" alt="Person" class="img-fluid">
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <img src="../img/person_4.jpg" alt="Person" class="img-fluid">
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <img src="../img/person_5.jpg" alt="Person" class="img-fluid">
-                              </a>
-                            </li>
-                          </ul>
                         </td>
-                  </tr>
-                 
-                  <!--end-->
-                  <tr>
-                      
-                      <td>
-                          Feb 15, 2023
-                      </td>
-                      <td>
-                          <img alt="..." src="https://bytewebster.com/img/logo.png" class="avatar avatar-xs rounded-circle me-2">
-                          <a class="text-heading font-semibold" href="">
-                              Bytewebster
-                          </a>
-                      </td>
-                      <td>
-                          Sales
-                      </td>
-                      <td>
-                          <span class="">
-                              <i class="bg-success"></i>Some Description Here...
-                          </span>
-                      </td>
-                      <td>
-                          <span class="">
-                              <i class="bg-success"></i>10.000
-                          </span>
-                      </td>
-                      <td>
-                              <a href="#"><i class="marosetbtn btn-sm fas fa-comments"></i></a>
-                      </td>
-                      <td>
-                          <span class="badge badge-lg badge-dot">
-                              <i class="bg-warning"></i>Declined
-                          </span>
-                           
-                      </td>
-                      <td>
-                          <ul class="persons">
-                            <li>
-                              <a href="#">
-                                <img src="../img/person_1.jpg" alt="Person" class="img-fluid">
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <img src="../img/person_2.jpg" alt="Person" class="img-fluid">
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <img src="../img/person_3.jpg" alt="Person" class="img-fluid">
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <img src="../img/person_4.jpg" alt="Person" class="img-fluid">
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <img src="../img/person_5.jpg" alt="Person" class="img-fluid">
-                              </a>
-                            </li>
-                          </ul>
-                        </td>
-                  </tr>
 
-                  <tr>
-                      
+                      {% else %}
                       <td>
-                          Feb 15, 2023
-                      </td>
-                      <td>
-                          <img alt="..." src="https://bytewebster.com/img/logo.png" class="avatar avatar-xs rounded-circle me-2">
-                          <a class="text-heading font-semibold" href="">
-                              Bytewebster
-                          </a>
-                      </td>
-                      <td>
-                          Sales
-                      </td>
-                      <td>
-                          <span class="">
-                              <i class="bg-success"></i>Some Description Here...
-                          </span>
-                      </td>
-                      <td>
-                          <span class="">
-                              <i class="bg-success"></i>10.000
-                          </span>
-                      </td>
-                      <td>
-                              <a href="#"><i class="marosetbtn btn-sm fas fa-comments"></i></a>
-                      </td>
-                      <td>
-                          <span class="badge badge-lg badge-dot">
-                              <i class="bg-danger"></i>Reported
-                          </span>
+                        <span class="badge badge-lg badge-dot">
+                            <i class="bg-warning"></i>Pending
+                        </span>
                            
                       </td>
-                      <td>
-                          <ul class="persons">
-                            <li>
-                              <a href="#">
-                                <img src="../img/person_1.jpg" alt="Person" class="img-fluid">
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <img src="../img/person_2.jpg" alt="Person" class="img-fluid">
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <img src="../img/person_3.jpg" alt="Person" class="img-fluid">
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <img src="../img/person_4.jpg" alt="Person" class="img-fluid">
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <img src="../img/person_5.jpg" alt="Person" class="img-fluid">
-                              </a>
-                            </li>
-                          </ul>
-                        </td>
-                  </tr>
+                      {% endif %}
 
-                  <tr>
-                      
-                      <td>
-                          Feb 15, 2023
-                      </td>
-                      <td>
-                          <img alt="..." src="https://bytewebster.com/img/logo.png" class="avatar avatar-xs rounded-circle me-2">
-                          <a class="text-heading font-semibold" href="">
-                              Bytewebster
-                          </a>
-                      </td>
-                      <td>
-                          Sales
-                      </td>
-                      <td>
-                          <span class="">
-                              <i class="bg-success"></i>Some Description Here...
-                          </span>
-                      </td>
-                      <td>
-                          <span class="">
-                              <i class="bg-success"></i>10.000
-                          </span>
-                      </td>
-                      <td>
-                              <a href="#"><i class="marosetbtn btn-sm fas fa-comments"></i></a>
-                      </td>
-                      <td>
-                          <span class="badge badge-lg badge-dot">
-                              <i class="bg-primary"></i>Under Review
-                          </span>
-                           
-                      </td>
                       <td>
                           <ul class="persons">
-                            <li>
-                              <a href="#">
-                                <img src="../img/person_1.jpg" alt="Person" class="img-fluid">
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <img src="../img/person_2.jpg" alt="Person" class="img-fluid">
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <img src="../img/person_3.jpg" alt="Person" class="img-fluid">
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <img src="../img/person_4.jpg" alt="Person" class="img-fluid">
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <img src="../img/person_5.jpg" alt="Person" class="img-fluid">
-                              </a>
-                            </li>
+                           <li>{{job.applyjob_set.all.count}}</li>
                           </ul>
                         </td>
                   </tr>
+                {% endfor %}
+                
                 
               </tbody>
           </table>

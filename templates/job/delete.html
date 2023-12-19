@@ -1,0 +1,133 @@
+{% extends 'job/base.html' %}
+{% load widget_tweaks %}
+
+
+
+{% block css %}
+{% load static %}
+
+    
+ <!-- User-Profile Stylesheet -->
+ <link href="https://fonts.googleapis.com/css?family=Mukta:300,400,500,600,700&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="{% static 'assets/vendors/@fortawesome/fontawesome-free/css/all.min.css' %}">
+ <link rel="stylesheet" href="{% static 'assets/css/live-resume.css' %}">
+ <link href="{% static 'css/form.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="container py-5">
+
+    <!-- For demo purpose -->
+    <div class="row mb-4">
+      <div class="col-lg-8 mx-auto text-center">
+        <h1 class="">Create Job</h1>
+      </div>
+    </div>
+    <!-- End -->
+  
+  
+    <div class="row">
+      <div class="col-lg-7 mx-auto">
+        <div class="bg-white rounded-lg shadow-sm p-5">
+          <!-- Resume -->
+          <ul role="tablist" class="nav bg-light nav-pills rounded-pill nav-fill mb-3">
+            <li class="nav-item">
+              <a data-toggle="pill" href="#nav-tab-card" class="nav-link active rounded-pill">
+                Job Information
+              </a>
+            </li>
+           
+            
+          </ul>
+          <!-- End -->
+  
+  
+          <!-- Personal Information -->
+          <div class="tab-content">
+  
+            <!-- credit card info-->
+            <div id="nav-tab-card" class="tab-pane fade show active">
+              <form role="form" method="POST">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="username">Title</label>
+                    {% render_field form.title class="form-control" placeholder="job title"  %}
+                </div>
+                <div class="form-group">
+                  <label for="username">Location</label>
+                  {% render_field form.location class="form-control" placeholder="location"  %}
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail4">Salary</label>
+                  {% render_field form.salary class="form-control" placeholder="Salary"  %}
+                </div>
+                <div class="form-group">
+                  <label for="Role">Requirnment </label>
+                  {% render_field form.requirnment|attr:"rows:2" class="form-control" placeholder="write short requirnment of your job"  %}
+                </div>
+                <div class="form-group">
+                    <label for="Role">Candidate </label>
+                    {% render_field form.idel_candidate|attr:"rows:2"  class="form-control" placeholder="write short requirnment of your job"  %}
+                  </div>
+                  <div class="form-group">
+                    <label for="Role">Is this job avaliable</label>
+                    {% render_field form.is_available class="form-check-input" placeholder="Available"  %}
+                  </div>
+                <!--
+                    <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                      <i class="fa fa-facebook">Facebook</i>
+                    </label>
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        <i class="fa fa-facebook ">Linkedin</i>
+                      </label>
+                      &nbsp;
+                      &nbsp;
+                      &nbsp;
+                      &nbsp;
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        <i class="fa fa-facebook">Github</i>
+                      </label>
+                     
+                  </div>
+                -->
+               
+
+                  <br>
+                
+                <!--save-->
+              
+                <button type="Submit" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm"> Save  </button>
+                <a href="{% url 'jobs' %}" type="button" class="subscribe btn btn-secondary btn-block rounded-pill shadow-sm"> Back  </a>
+
+              </form>
+            </div>
+            <!-- End -->
+  
+      
+  
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+<!-- Back to Top -->
+</div>
+
+{% endblock content %}
