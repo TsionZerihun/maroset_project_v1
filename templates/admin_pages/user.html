@@ -1,0 +1,87 @@
+{% extends 'admin_pages/base.html' %}
+{% block content %}
+<section class="p-t-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="title-5 m-b-35">user detail</h3>
+                <div class="table-data__tool">
+                  
+                    <div class="table-data__tool-right">
+                        <button class="au-btn au-btn-icon au-btn--blue au-btn--small">
+                            <i class="zmdi zmdi-plus"></i>ADD TO BLOCKLIST</button>
+                            <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                <i class="zmdi zmdi-plus"></i>REMOVE FROM BLOCKLIST</button>
+                    </div>
+                </div>
+                <div class="table-responsive table-responsive-data2">
+                    <table class="table table-data2">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <label class="au-checkbox">
+                                        <input type="checkbox">
+                                        <span class="au-checkmark"></span>
+                                    </label>
+                                </th>
+                                <th>name</th>
+                                <th>email</th>
+                                <th>description</th>
+                                <th>date</th>
+                                <th>status</th>
+                                <th>View Profile</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in users %}
+                            <tr class="tr-shadow">
+                                <td>
+                                    <label class="au-checkbox">
+                                        <input type="checkbox">
+                                        <span class="au-checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>{{user.email}}</td>
+                                <td>
+                                    <span class="block-email">lori@example.com</span>
+                                </td>
+                                <td class="desc">Place Holder</td>
+                                <td>2018-09-27 02:12</td>
+                                <td>
+                                    <span class="status--process">Warning</span>
+                                </td>
+                                <td>
+                                    <img alt="..." src="https://bytewebster.com/img/logo.png" class="avatar avatar-xs rounded-circle me-2">
+                                    <a class="text-heading font-semibold" href="">
+                                        Bytewebster
+                                    </a>
+                                </td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Send DM">
+                                            <i class="zmdi zmdi-mail-send"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="REMOVE FROM LIST">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                            <i class="zmdi zmdi-more"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="spacer"></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END DATA TABLE-->
+{% endblock content %}

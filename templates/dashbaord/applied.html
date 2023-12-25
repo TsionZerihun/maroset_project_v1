@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
+{% load humanize %}
 
 {% block content %}
 {% if request.user.is_applicant %}
 <div class="card shadow border-0 mb-7">
     <div class="card-header">
-        <h5 class="mb-0">Applications</h5>
+        <h5 class="mb-0">Applied Jobs</h5>
     </div>
     <div class="table-responsive">
         <table class="table table-hover table-nowrap">
@@ -18,267 +19,37 @@
                 </tr>
             </thead>
             <tbody>
+                {% for job in jobs %}
                 <tr>
                     
                     <td>
-                        Feb 15, 2023
+                        hii
+                        {{job.job.the_title}}
+                        
                     </td>
                     <td>
                         <img alt="..." src="https://bytewebster.com/img/logo.png" class="avatar avatar-xs rounded-circle me-2">
-                        <a class="text-heading font-semibold" href="https://www.bytewebster.com/">
-                            Bytewebster
+                        <a class="text-heading font-semibold" href="">
+                            {{job.job.company}}
                         </a>
                     </td>
                     <td>
-                        $3.500
+                      {{job.job.salary}} ETB
                     </td>
                     <td>
-                        <span class="badge badge-lg badge-dot">
-                            <i class="bg-success"></i>Applied
+                        <span class="">
+                            <i class="bg-success"></i>{{job.job.the_title}}
                         </span>
                     </td>
                     <td class="text-end">
-                        <a href="../job-detail.html" class="btn btn-sm btn-neutral marosetbtn">Job Detail</a>
-                        <button type="button" onclick="showSweetAlert()" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                            <i class="bi bi-trash"></i
-                                >
-                        </button>
+                        &nbsp;
+                        <a href="#" class="btn btn-sm btn-outline-danger">Report Job</a>
+
+                      
+                        
                     </td>
                 </tr>
-                <tr>
-                    
-                    <td>
-                        Apr 15, 2023
-                    </td>
-                    <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-2.png" class="avatar avatar-xs rounded-circle me-2">
-                        <a class="text-heading font-semibold" href="#">
-                            Netguru
-                        </a>
-                    </td>
-                    <td>
-                        $2.750
-                    </td>
-                    <td>
-                        <span class="badge badge-lg badge-dot">
-                            <i class="bg-warning"></i>Incomplete
-                        </span>
-                    </td>
-                    <td class="text-end">
-                        <a href="../job-detail.html" class="btn btn-sm btn-neutral marosetbtn">Job Detail</a>
-                        <button type="button" onclick="showSweetAlert()" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                
-                    <td>
-                        Mar 20, 2023
-                    </td>
-                    <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-3.png" class="avatar avatar-xs rounded-circle me-2">
-                        <a class="text-heading font-semibold" href="#">
-                            Figma
-                        </a>
-                    </td>
-                    <td>
-                        $4.200
-                    </td>
-                    <td>
-                        <span class="badge badge-lg badge-dot">
-                            <i class="bg-success"></i>Applied
-                        </span>
-                    </td>
-                    <td class="text-end">
-                        <a href="../job-detail.html" class="btn btn-sm btn-neutral marosetbtn">Job Detail</a>
-                        <button type="button" onclick="showSweetAlert()" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    
-                    <td>
-                        Feb 15, 2023
-                    </td>
-                    <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-4.png" class="avatar avatar-xs rounded-circle me-2">
-                        <a class="text-heading font-semibold" href="#">
-                            Mailchimp
-                        </a>
-                    </td>
-                    <td>
-                        $3.500
-                    </td>
-                    <td>
-                        <span class="badge badge-lg badge-dot">
-                            <i class="bg-dark"></i>Job Terminated
-                        </span>
-                    </td>
-                    <td class="text-end">
-                        <a href="../job-detail.html" class="btn btn-sm btn-neutral marosetbtn">Job Detail</a>
-                        <button type="button" onclick="showSweetAlert()" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    
-                    <td>
-                        Apr 10, 2023
-                    </td>
-                    <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-5.png" class="avatar avatar-xs rounded-circle me-2">
-                        <a class="text-heading font-semibold" href="#">
-                            Webpixels
-                        </a>
-                    </td>
-                    <td>
-                        $1.500
-                    </td>
-                    <td>
-                        <span class="badge badge-lg badge-dot">
-                            <i class="bg-danger"></i>Job Closed
-                        </span>
-                    </td>
-                    <td class="text-end">
-                        <a href="../job-detail.html" class="btn btn-sm btn-neutral marosetbtn">Job Detail</a>
-                        <button type="button" onclick="showSweetAlert()" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    
-                    <td>
-                        Feb 15, 2023
-                    </td>
-                    <td>
-                        <img alt="..." src="https://bytewebster.com/img/logo.png" class="avatar avatar-xs rounded-circle me-2">
-                        <a class="text-heading font-semibold" href="https://www.bytewebster.com/">
-                            Bytewebster
-                        </a>
-                    </td>
-                    <td>
-                        $3.500
-                    </td>
-                    <td>
-                        <span class="badge badge-lg badge-dot">
-                            <i class="bg-success"></i>Applied
-                        </span>
-                    </td>
-                    <td class="text-end">
-                        <a href="../job-detail.html" class="btn btn-sm btn-neutral marosetbtn">Job Detail</a>
-                        <button type="button" onclick="showSweetAlert()" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    
-                    <td>
-                        Apr 15, 2023
-                    </td>
-                    <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-2.png" class="avatar avatar-xs rounded-circle me-2">
-                        <a class="text-heading font-semibold" href="#">
-                            Netguru
-                        </a>
-                    </td>
-                    <td>
-                        $2.750
-                    </td>
-                    <td>
-                        <span class="badge badge-lg badge-dot">
-                            <i class="bg-warning"></i>Incomplete
-                        </span>
-                    </td>
-                    <td class="text-end">
-                        <a href="../job-detail.html" class="btn btn-sm btn-neutral marosetbtn">Job Detail</a>
-                        <button type="button" onclick="showSweetAlert()" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    
-                    <td>
-                        Mar 20, 2023
-                    </td>
-                    <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-3.png" class="avatar avatar-xs rounded-circle me-2">
-                        <a class="text-heading font-semibold" href="#">
-                            Figma
-                        </a>
-                    </td>
-                    <td>
-                        $4.200
-                    </td>
-                    <td>
-                        <span class="badge badge-lg badge-dot">
-                            <i class="bg-success"></i>Applied
-                        </span>
-                    </td>
-                    <td class="text-end">
-                        <a href="../job-detail.html" class="btn btn-sm btn-neutral marosetbtn">Job Detail</a>
-                        <button type="button" onclick="showSweetAlert()" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                
-                    <td>
-                        Feb 15, 2023
-                    </td>
-                    <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-4.png" class="avatar avatar-xs rounded-circle me-2">
-                        <a class="text-heading font-semibold" href="#">
-                            Mailchimp
-                        </a>
-                    </td>
-                    <td>
-                        $3.500
-                    </td>
-                    <td>
-                        <span class="badge badge-lg badge-dot">
-                            <i class="bg-dark"></i>Incomplete
-                        </span>
-                    </td>
-                    <td class="text-end">
-                        <a href="../job-detail.html" class="btn btn-sm btn-neutral marosetbtn">Job Detail</a>
-                        <button type="button" onclick="showSweetAlert()" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    
-                    <td>
-                        Apr 10, 2023
-                    </td>
-                    <td>
-                        <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-5.png" class="avatar avatar-xs rounded-circle me-2">
-                        <a class="text-heading font-semibold" href="#">
-                            Webpixels
-                        </a>
-                    </td>
-                    <td>
-                        $1.500
-                    </td>
-                    <td>
-                        <span class="badge badge-lg badge-dot">
-                            <i class="bg-danger"></i>Closed
-                        </span>
-                    </td>
-                    <td class="text-end">
-                        <a href="../job-detail.html" class="btn btn-sm btn-neutral marosetbtn">Job Detail</a>
-                        <button type="button" onclick="showSweetAlert()" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>

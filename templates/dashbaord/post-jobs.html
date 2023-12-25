@@ -46,7 +46,7 @@
                       <th scope="col">Job Title</th>
                       <th scope="col">Job Description</th>
                       <th scope="col">Salary(ETB)</th>
-                      <th scope="col">Messages</th>
+                      <th scope="col">View Messages</th>
                       <th scope="col">Status</th>
                       <th scope="col">Applicants</th>
 
@@ -83,25 +83,25 @@
                       <td>
                               <a href="#"><i class="marosetbtn btn-sm fas fa-comments"></i></a>
                       </td>
-                      {% if job.is_available %}
+                      <!--test
+
                       <td>
                           <span class="badge badge-lg badge-dot">
                               <i class="bg-success"></i>Active
                           </span>
                         </td>
+                        -->
 
-                      {% else %}
-                      <td>
+                        <td>
                         <span class="badge badge-lg badge-dot">
-                            <i class="bg-warning"></i>Pending
+                            <i class="bg-warning"></i>{{job.job_status}}
                         </span>
-                           
-                      </td>
-                      {% endif %}
+                    
 
                       <td>
                           <ul class="persons">
                            <li>{{job.applyjob_set.all.count}}</li>
+                           <a href="{% url 'all-applicants' job.pk %}"><small>View all</small></a>
                           </ul>
                         </td>
                   </tr>

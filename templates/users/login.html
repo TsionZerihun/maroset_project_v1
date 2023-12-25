@@ -15,16 +15,17 @@
 		<form method="POST" action="#">
 		 {% csrf_token %}
 			<h1>Sign in</h1>
-			{% if messages %}
-		{% for message in messages %}
-			<div class="alert alert-{{message.tags}}" role="alert">
-				<b>{{message}}</b>
-		  	</div>
-		{% endfor %}
-		{% endif %}
+			
 
 			<br>
 			<span>use your account</span>
+			{% if messages %}
+		{% for message in messages %}
+			<div class="alert alert-{{message.tags}}" role="alert">
+				<small>{{message}}</small>
+		  	</div>
+		{% endfor %}
+		{% endif %}
 			<input type="email" name="email" placeholder="Email" />
 			<input type="password" name="password" placeholder="Password" />
 			<a href="#">Forgot your password?</a>

@@ -24,6 +24,8 @@ class Resume(models.Model):
     experience_end = models.DateField(null=True, blank=True)
     experience_description = models.TextField(max_length=1000,null=True, blank=True)
 
+    upload_resume = models.FileField(upload_to='resume', null=True, blank=True)
+
 
 
 

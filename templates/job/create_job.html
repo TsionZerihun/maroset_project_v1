@@ -63,6 +63,10 @@
                 {% render_field form.idel_candidate|attr:"rows:2" class="form-control" placeholder="Requirement"  %}
             </div>
             <div class="form-group">
+              <label for="Role">Catagory</label>
+              {% render_field form.industry class="form-control" placeholder="Requirement"  %}
+          </div>
+            <div class="form-group">
               <label for="Role">Is Job Available</label>
               {% render_field form.is_available class="form-check-input" placeholder="is-available"  %}
           </div>

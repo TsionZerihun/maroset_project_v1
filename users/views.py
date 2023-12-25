@@ -20,8 +20,8 @@ def register_applicant(request):
                 messages.info(request, 'account created sucessfully!!')
                 return redirect('login')
         else:
-             messages.warning(request, 'something went wrong')
-             return redirect('register-applicant')
+            messages.warning(request ,'password-rror')
+            return redirect('register-applicant')
     else:
          form = RegisterUserForm()
          context = {'form': form}
@@ -47,7 +47,11 @@ def register_recruiter(request):
          form = RegisterUserForm()
          context = {'form': form}
          return render(request, 'users/register_recruiter.html', context)
-    
+
+def blocked(request):
+    return render(request,'users/account_block.html')
+
+
 #login
 def login_user(request):
      if request.method == 'POST':
@@ -55,9 +59,19 @@ def login_user(request):
         password = request.POST.get('password')
           
         user = authenticate(request, username=email, password=password)
-        if user is not None and user.is_active:
+        if request.user.is_superuser:
+            login(request, user)
+            return redirect('administrator')
+        
+        
+        elif user is not None and user.is_active:
             login(request, user)
             return redirect('dashboard')
+        
+        elif user is not request.user.is_active:
+            return redirect('blocked')
+
+
         else:
              messages.warning(request, 'Wrong email or password')
              return redirect('login')

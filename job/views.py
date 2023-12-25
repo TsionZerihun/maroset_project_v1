@@ -54,8 +54,7 @@ def apply_to_job(request, pk):
         else:
             ApplyJob.objects.create(
                 job=job,
-                user = request.user,
-                status = 'Pending'
+                user = request.user
             )
             messages.info(request, 'You Have Sucessfully applied')
             return redirect ('dashboard')   
@@ -64,7 +63,9 @@ def apply_to_job(request, pk):
         return redirect('login')
     
 def all_applicant(request, pk):
-    job = Job.onjects.get(pk=pk)
+    job = Job.objects.get(pk=pk)
     applicants = job.applyjob_set.all()
     context = {'job':job, 'applicants':applicants }
-    return render(request, 'job/all_applicants.html')
+    return render(request, 'job/all_applicants.html', context)
+
+

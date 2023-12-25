@@ -8,7 +8,7 @@ from users.models import User
 def update_resume(request):
     resume = Resume.objects.get(user=request.user)
     if request.method == 'POST':
-        form = UpdateResumeForms(request.POST, instance=resume)
+        form = UpdateResumeForms(request.POST, request.FILES, instance=resume)
         if form.is_valid():
             var = form.save(commit=False)
             user = User.objects.get(pk=request.user.id)
@@ -19,7 +19,7 @@ def update_resume(request):
             return redirect('update-resume')
         else:
             messages.warning(request, 'something went wrong')
-            return redirect('jobs')
+            return redirect('apply')
     else:
         form = UpdateResumeForms(instance=resume)
         context = {'form' : form}

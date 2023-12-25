@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect
 from job.models import Job, ApplyJob
 from company.models import Company
+from .filter import Jobfilter
 
 
 
-def dashboard(request):
-    return render(request, 'index/main.html')
+def index(request):
+    filter = Jobfilter(request.GET, queryset=Job.objects.filter(is_available=True).order_by('-timestamp'))
+    context = {'filter':filter}
+    return render(request, 'index/main.html', context)
 
 def job_list(request):
     jobs = Job.objects.filter(is_available=True).order_by('-timestamp')

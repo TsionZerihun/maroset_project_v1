@@ -22,44 +22,44 @@
                     <th scope="col">Date</th>
                     <th scope="col">Company</th>
                     <th scope="col">Offer</th>
-                    <th scope="col">jOB Title</th>
+                    <th scope="col">Status</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                {% if jobs %}
-                {% for job in jobs %}
-                <tr>
-                    
-                    <td>
-                        {{job.timestamp|naturaltime}}
+                    {% for job in jobs %} 
+                    <tr>
                         
-                    </td>
-                    <td>
-                        <img alt="..." src="https://bytewebster.com/img/logo.png" class="avatar avatar-xs rounded-circle me-2">
-                        <a class="text-heading font-semibold" href="">
-                            {{job.company}}
-                        </a>
-                    </td>
-                    <td>
-                      {{job.salary}} ETB
-                    </td>
-                    <td>
-                        <span class="">
-                            <i class="bg-success"></i>{{job.the_title}}
-                        </span>
-                    </td>
-                    <td class="text-end">
-                        <a href="{% url 'job-detail' job.pk %}" class="btn btn-sm btn-neutral marosetbtn">Apply Now</a>
-                        &nbsp;
-                        <a href="#" class="btn btn-sm btn-outline-danger">Report Job</a>
+                        <td>
+                            {{job.timestamp|naturaltime}}
+                            
+                        </td>
+                        <td>
+                            <img alt="..." src="https://bytewebster.com/img/logo.png" class="avatar avatar-xs rounded-circle me-2">
+                            <a class="text-heading font-semibold" href="">
+                                {{job.company}}
+                            </a>
+                        </td>
+                        <td>
+                        {{job.salary}} ETB
+                        </td>
+                        <td>
+                            <span class="">
+                                <i class="bg-success"></i>{{job.the_title}}
+                            </span>
+                        </td>
+                        <td class="text-end">
+                            <a href="{% url 'job-detail' job.pk %}" class="btn btn-sm btn-neutral marosetbtn">Apply Now</a>
+                            &nbsp;
+                            <a href="#" class="btn btn-sm btn-outline-danger">Report Job</a>
 
-                      
                         
-                    </td>
-                </tr>
+                            
+                        </td>
+                    </tr>
+
+                  
                 {% endfor %}
-                {% endif %}
                             
                 
 

@@ -17,13 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('users.urls')),
     path('company/', include('company.urls')),
     path('resume/', include('resume.urls')),
-    path('', views.dashboard, name="index"),
+    path('', views.index, name="index"),
     path('job-list', views.job_list, name="job-list"),
     path('job-deatil/<int:pk>/', views.job_detail, name="job-detail"),
 
@@ -31,7 +33,6 @@ urlpatterns = [
     path('dashboard/', include('dashboard.urls')),
     path('job/', include('job.urls'))
 
-
-
-
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

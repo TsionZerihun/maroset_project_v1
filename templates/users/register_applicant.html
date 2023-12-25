@@ -42,16 +42,18 @@
   <div class="wbody">
   <div class="wrapper">
     <h2>Registration</h2>
-    {% if messages %}
-		{% for message in messages %}
-		  <div class="alert alert-{{message.tags}}" role="alert">
-			  <b>{{message}}</b>
-		  </div>
-		{% endfor %}
-		{% endif %}
+  
 
     <form action="#" method="POST">
       {% csrf_token %}
+      {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{message.tags}}" role="alert">
+          <b>{{message}}</b>
+        </div>
+      {% endfor %}
+      {% endif %}
+  
       <div class="input-box">
         {% render_field form.email class="form-control" placeholder="Email"  %}
       </div>

@@ -1,0 +1,65 @@
+{% extends 'admin_pages/base.html' %}
+{% block content %}
+<div class=" mx-5 card shadow border-0 mb-7">
+    <div class="card-header">
+        <h5 class="mb-0">Reported Jobs</h5>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover table-nowrap">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Reported By</th>
+                    <th scope="col">contact job owner</th>
+                    <th scope="col">jOB Title</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    
+                    <td>
+                        Feb 15, 2023
+                    </td>
+                    <td>
+                        <img alt="..." src="https://bytewebster.com/img/logo.png" class="avatar avatar-xs rounded-circle me-2">
+                        <a class="text-heading font-semibold" href="">
+                            Bytewebster
+                        </a>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        <span class="">
+                            <i class="bg-success"></i>Software Engineer
+                        </span>
+                    </td>
+                    <td class="text-end">
+                        <a href="#" class="marosetbtn btn btn-sm btn-primary "> GO TO BLACKLIST</a>
+                        &nbsp;
+                        <a href="#" class="btn btn-sm btn-outline-info">View Detail</a>   
+                    </td>
+                </tr>
+              
+               
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer border-0 py-5">
+        <span class="text-muted text-sm">Showing 10 items out of 250 results found</span>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link disabled" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link bg-info text-white" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </nav>
+    </div>
+</div>
+
+
+{% endblock content %}
