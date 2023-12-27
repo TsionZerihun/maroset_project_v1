@@ -70,22 +70,21 @@
             <li class="clearfix">
             <div class="message-data text-right">
             <span class="message-data-time"></span>
-            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
             </div>
             {% for message in messages %}
             {% if message.created_by.id is user.id %}
-            <span class="message-data-time float-left">{{message.created_at|naturaltime}}</span>
+            <span class="message-data-time float-right">{{message.created_at|naturaltime}}</span>
             <br>
-            <div class="message other-message">{{message.content}}</div>
+            <div class="message other-message float-right">{{message.content}}</div>
             
 
             {% else %}
          
 
-            <span class="message-data-time float-right">{{message.created_at|naturaltime}}</span>
+            <span class="message-data-time float-left">{{message.created_at|naturaltime}}</span>
             <br>
             
-            <div class="message other-message float-right">{{message.content}}</div>
+            <div class="message other-message float-left">{{message.content}}</div>
             {% endif %}
 
             </li>

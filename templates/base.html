@@ -65,19 +65,32 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-bell"></i></a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-bell">&nbsp; {{notifications.count}}</i></a>
                         <ul
                             class="dropdown-menu dropdown-menu-end"
                             >
-                            <li>
-                            <a class="dropdown-item" href="#">Some news</a>
-                            </li>
-                            <li>
-                            <a class="dropdown-item" href="#">Another news</a>
-                            </li>
-                            <li>
-                            <a class="dropdown-item" href="#">Another news</a>
-                            </li>
+                            {% if not notification %}
+                                <li>
+                                <a class="dropdown-item" href="#">No notification yet</a>
+                                </li>
+                            {% endif %}
+                            {% for motification in notifications %}
+                                {% if notification.notification_type == 'message' %}
+                                <li>
+                                <a href="{% url 'notifications' %}?goto=user_message_job&notification={{ notification.id }}&extra_id={{ notification.extra_id }}" class="dropdown-item">Another news</a>
+                                <strong>{{ notification.created_by.username }}</strong> sent you a message<br>
+                                <small>{{ notification.created_at|timesince }} ago
+                                 </li>
+                                {% elif notification.notification_type == 'application' %}
+
+                                <li>
+                                <a class="dropdown-item" href="#">Applicants </a>
+                                <strong>{{ notification.created_by.username }}</strong> applied for your job<br>
+                                <small>{{ notification.created_at|timesince }} ago</small>
+
+                                </li>
+                                {% endif %}
+                                {% endfor %}
                         </ul>
                     </div>
                     <div class="nav-item dropdown">

@@ -5,6 +5,10 @@ from .models import User
 from .form import RegisterUserForm
 from resume.models import Resume
 from company.models import Company
+from django.contrib.auth.decorators import login_required
+from .models import Notification
+
+
 
 # register applicants only
 def register_applicant(request):
@@ -91,6 +95,22 @@ def logout_user(request):
 
             
                
+@login_required
+def notifications(request):
+    goto = request.GET.get('goto', '')
+    notification_id = request.GET.get('notification', 0)
+    extra_id = request.GET.get('extra_id', 0)
 
+    if goto != '':
+        notification = Notification.objects.get(pk=notification_id)
+        notification.is_read = True
+        notification.save()
+
+        if notification.notification_type == Notification.MESSAGE:
+            return redirect('user_message_job', application_id=notification.extra_id)
+        elif notification.notification_type == Notification.APPLICATION:
+            return redirect('user_message_job', application_id=notification.extra_id)
+    
+    return render(request, 'base.html')
      
      
