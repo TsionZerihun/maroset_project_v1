@@ -8,4 +8,5 @@ urlpatterns = [
     path('all-applicants/<int:pk>/', views.all_applicant, name='all-applicants')
 
 
+
 ]

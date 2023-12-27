@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from job.models import Job, ApplyJob
+from job.models import Job, ApplyJob, ConversationMessageJob
 from django.contrib import messages
 from job.form import JobAdminResponseForm, CreateJobForm, UpdateJobForm
 from users.models import User
@@ -39,13 +39,13 @@ def admin_view_users(request):
 
 
 def admin_views_messages(request):
-    return render(request, 'admin_pages/messages.html')
+    return render(request, 'admin_pages/chat_users.html')
 
 def admin_reported_jobs(request):
     return render(request, 'admin_pages/reported_jobs.html')
 
 def admin_jobs(request):
-    jobs = Job.objects.filter(job_status='Pending')
+    jobs = Job.objects.filter()
     context = {'jobs': jobs}
     return render(request, 'admin_pages/review_jobs.html', context)
 
@@ -76,10 +76,52 @@ def admin_response(request, pk):
                        
 def block_users(request, pk):
     user = User.objects.get(pk=pk)
-    if user is user.is_active:
+    if user.is_active:
         user.is_active = False
+        user.save()
         return redirect('admin_users')
     else:
         messages.warning(request, f'user is already inactive')
+        return redirect('admin_users')
+def unblock_users(request, pk):
+    user = User.objects.get(pk=pk)
+    if user.is_active:
+        return redirect('admin_users')
+    else:
+        user.is_active = True
+        user.save()
+        return redirect('admin_users')
+
+
+def message_job(request, pk):
+    job = Job.objects.get(pk=pk)
+    messages = ConversationMessageJob.objects.filter(job=pk)
+    users = User.objects.get(pk=pk)
+    admin = User.objects.get(is_superuser=True)
+    if request.method == 'POST':
+        content = request.POST.get('content')
+        if content:
+            conversationmessagejob = ConversationMessageJob.objects.create(job=job, content=content, created_by=request.user )
+            return redirect('job-messages',pk=pk)
+    
+
+    context = {'job':job,'messages':messages,'admin':admin}
+    return render(request, 'admin_pages/job_messages.html', context)
+    
+def user_message_job(request, pk):
+    job = Job.objects.get(pk=pk)
+    messages = ConversationMessageJob.objects.filter(job=pk)
+    users = User.objects.get(pk=pk)
+    user = User.objects.get(pk=request.user.id)
+
+    if request.method == 'POST':
+        content = request.POST.get('content')
+        if content:
+            conversationmessagejob = ConversationMessageJob.objects.create(job=job, content=content, created_by=request.user )
+            return redirect('job-owner-messages',pk=pk)
+    
+
+    context = {'job':job,'messages':messages,'user':user}
+    return render(request, 'dashbaord/job_owner_messages.html', context)
 
 

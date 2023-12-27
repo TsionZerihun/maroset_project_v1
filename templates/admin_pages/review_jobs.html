@@ -43,7 +43,9 @@
                             &nbsp;
                             <a href="{% url 'update-job' pk=j.pk %}" class="btn btn-sm btn-outline-info">Update</a>   
                             &nbsp;
-                            <a href="{% url 'admin_response' pk=j.pk %}" class="btn btn-sm btn-outline-info">Review</a>   
+                            <a href="{% url 'admin_response' pk=j.pk %}" class="btn btn-sm btn-outline-info">Review</a> 
+                            &nbsp;
+                            <a href="{% url 'job-messages' pk=j.pk %}" class="btn btn-sm btn-outline-info">Send Messages</a>     
 
                         </td>
                     </tr>

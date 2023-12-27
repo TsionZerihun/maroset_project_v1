@@ -9,9 +9,8 @@
                   
                     <div class="table-data__tool-right">
                         <button class="au-btn au-btn-icon au-btn--blue au-btn--small">
-                            <i class="zmdi zmdi-plus"></i>ADD TO BLOCKLIST</button>
+                            <i class=""></i>ADD TO BLOCKLIST</button>
                             <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                <i class="zmdi zmdi-plus"></i>REMOVE FROM BLOCKLIST</button>
                     </div>
                 </div>
                 <div class="table-responsive table-responsive-data2">
@@ -30,11 +29,14 @@
                                 <th>date</th>
                                 <th>status</th>
                                 <th>View Profile</th>
+                                <th>Action</th>
+
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for user in users %}
+                            {% if not user.is_superuser %}
                             <tr class="tr-shadow">
                                 <td>
                                     <label class="au-checkbox">
@@ -49,8 +51,14 @@
                                 <td class="desc">Place Holder</td>
                                 <td>2018-09-27 02:12</td>
                                 <td>
-                                    <span class="status--process">Warning</span>
+                                    {% if user.is_active %}
+                                    <span class="status--process">Active
+                                    </span>
+                                {% else %}
+                                <span class="status--process">Blocked
+                                </span>
                                 </td>
+                                {% endif %}
                                 <td>
                                     <img alt="..." src="https://bytewebster.com/img/logo.png" class="avatar avatar-xs rounded-circle me-2">
                                     <a class="text-heading font-semibold" href="">
@@ -59,22 +67,18 @@
                                 </td>
                                 <td>
                                     <div class="table-data-feature">
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Send DM">
-                                            <i class="zmdi zmdi-mail-send"></i>
-                                        </button>
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                            <i class="zmdi zmdi-edit"></i>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="block">
+                                            <a href="{% url 'block_users' pk=user.pk %}"><i class="zmdi zmdi-plus"></i></a>
                                         </button>
                                         <button class="item" data-toggle="tooltip" data-placement="top" title="REMOVE FROM LIST">
-                                            <i class="zmdi zmdi-delete"></i>
+                                            <a href="{% url 'unblock_users' pk=user.pk %}"><i class="zmdi zmdi-delete"></i></a>
                                         </button>
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                            <i class="zmdi zmdi-more"></i>
-                                        </button>
+                                        
                                     </div>
                                 </td>
                             </tr>
                             <tr class="spacer"></tr>
+                            {% endif %}
                             {% endfor %}
                         </tbody>
                     </table>

@@ -34,3 +34,13 @@ class ApplyJob(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
+
+class ConversationMessageJob(models.Model):
+    job = models.ForeignKey(Job, related_name='conversationmessagejob', on_delete=models.CASCADE)
+    content = models.TextField()
+
+    created_by = models.ForeignKey(User, related_name='conversationmessagejob', on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['created_at']
