@@ -1,6 +1,6 @@
 from django.db import models
 from users.models import User
-from company.models import Company
+from company.models import Company,Startup
 
 class Indusrty(models.Model):
     name = models.CharField(max_length=100)
@@ -15,7 +15,8 @@ class Job(models.Model):
         ('Pending', 'Pending')
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE) 
-    company = models.ForeignKey(Company, on_delete=models.CASCADE)
+    company = models.ForeignKey(Company, on_delete=models.DO_NOTHING, null=True, blank=True)
+    startup = models.ForeignKey(Startup, on_delete=models.DO_NOTHING, null=True, blank=True)
     the_title = models.CharField(max_length=100, null=True, blank=True)    
     location = models.CharField(max_length=100, null=True, blank=True)
     salary = models.PositiveBigIntegerField(default=35000, null=True, blank=True)
@@ -26,8 +27,9 @@ class Job(models.Model):
     industry = models.ForeignKey(Indusrty, on_delete=models.DO_NOTHING, null=True, blank=True)
     job_status = models.CharField(max_length=20, default='Pending', choices=job_status_choices, null=True, blank=True)
     admin_comment = models.TextField(null=True, blank=True)
-    def __str__(self):
-        return self.the_title
+    
+    #def __str__(self):
+    #    return self.the_title
     
 
 class ApplyJob(models.Model):
@@ -44,3 +46,4 @@ class ConversationMessageJob(models.Model):
 
     class Meta:
         ordering = ['created_at']
+

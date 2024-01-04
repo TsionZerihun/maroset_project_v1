@@ -3,16 +3,18 @@
 {% load humanize %}
 
 {% block content %}
-{% if request.user.is_applicant %}
-<button type="button" class="btn btn-secondary mb-5 px-10 py-3 btn-cool-blues" data-toggle="modal" data-target="#exampleModalCenter">
-  <p>REGISTER COMPANY</p>
-</button>
 
-{% elif request.user.is_recruiter %}
+
 {% if not request.user.has_company %}
-<div class="alert alert-danger" role="alert">
-  <b>You are seeing this because you have not created any company. create one from <a href="{% url 'update-company' %}">here</a></b>
+
+<div class="height alert alert-danger" role="alert">
+  <div style="height: 100px; ">
+    <br>
+  <b>You are seeing this because you have not created any company. create <a href="{% url 'create_company' %}"> company </a> or <a href="{% url 'create_startup' %}">startup</a></b>
+    <br><br>
 </div>
+</div>
+
 {% elif request.user.has_company %}
 
 <div>
@@ -101,7 +103,7 @@
                       <td>
                           <ul class="persons">
                            <li>{{job.applyjob_set.all.count}}</li>
-                           <a href="{% url 'all-applicants' job.pk %}"><small>View all</small></a>
+                           <a href="{% url 'all-applicants' job.pk %}"><small>View all{{job.pk}}</small></a>
                           </ul>
                         </td>
                   </tr>
@@ -125,7 +127,7 @@
       </div>
   </div>
 </div>
-{% endif %}
+
 
 {% endif %}
 

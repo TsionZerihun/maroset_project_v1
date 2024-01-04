@@ -6,7 +6,7 @@ from .form import RegisterUserForm
 from resume.models import Resume
 from company.models import Company
 from django.contrib.auth.decorators import login_required
-from .models import Notification
+from .models import Notification,ConversationMessageUser
 
 
 
@@ -17,7 +17,7 @@ def register_applicant(request):
         if form.is_valid():
                 var = form.save(commit=False)
                 var.is_applicant = True
-
+                var.is_recruiter = True
                 var.username = var.email
                 var.save()
                 Resume.objects.create(user=var)
@@ -31,26 +31,6 @@ def register_applicant(request):
          context = {'form': form}
          return render(request, 'users/register_applicant.html', context)
                 
-def register_recruiter(request):
-    if request.method == 'POST':
-        form = RegisterUserForm(request.POST)
-        if form.is_valid():
-                
-                var = form.save(commit=False)
-                var.is_recruiter = True
-                var.username = var.email
-
-                var.save()
-                Company.objects.create(user=var)
-                messages.info(request, 'account created sucessfully!!')
-                return redirect('login')
-        else:
-             messages.warning(request, 'password must contain letter number and special character')
-             return redirect('register-recruiter')
-    else:
-         form = RegisterUserForm()
-         context = {'form': form}
-         return render(request, 'users/register_recruiter.html', context)
 
 def blocked(request):
     return render(request,'users/account_block.html')
@@ -95,22 +75,11 @@ def logout_user(request):
 
             
                
-@login_required
-def notifications(request):
-    goto = request.GET.get('goto', '')
-    notification_id = request.GET.get('notification', 0)
-    extra_id = request.GET.get('extra_id', 0)
 
-    if goto != '':
-        notification = Notification.objects.get(pk=notification_id)
-        notification.is_read = True
-        notification.save()
 
-        if notification.notification_type == Notification.MESSAGE:
-            return redirect('user_message_job', application_id=notification.extra_id)
-        elif notification.notification_type == Notification.APPLICATION:
-            return redirect('user_message_job', application_id=notification.extra_id)
+
     
-    return render(request, 'base.html')
+
+
      
      

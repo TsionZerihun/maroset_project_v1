@@ -1,0 +1,126 @@
+{% extends 'company/base.html' %}
+{% load widget_tweaks %}
+
+
+
+{% block css %}
+{% load static %}
+
+    
+ <!-- User-Profile Stylesheet -->
+ <link href="https://fonts.googleapis.com/css?family=Mukta:300,400,500,600,700&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="{% static 'assets/vendors/@fortawesome/fontawesome-free/css/all.min.css' %}">
+ <link rel="stylesheet" href="{% static 'assets/css/live-resume.css' %}">
+ <link href="{% static 'css/form.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="container py-5">
+
+    <!-- For demo purpose -->
+    <div class="row mb-4">
+      <div class="col-lg-8 mx-auto text-center">
+        <h1 class="">Register Startup</h1>
+      </div>
+    </div>
+    <!-- End -->
+  
+  
+    <div class="row">
+      <div class="col-lg-7 mx-auto">
+        <div class="bg-white rounded-lg shadow-sm p-5">
+          <!-- Resume -->
+          <ul role="tablist" class="nav bg-light nav-pills rounded-pill nav-fill mb-3">
+            <li class="nav-item">
+              <a data-toggle="pill" href="#nav-tab-card" class="nav-link active rounded-pill">
+                Startup Information
+              </a>
+            </li>
+           
+            
+          </ul>
+          <!-- End -->
+  
+  
+          <!-- Personal Information -->
+          <div class="tab-content">
+  
+            <!-- credit card info-->
+            <div id="nav-tab-card" class="tab-pane fade show active">
+              <form role="form" method="POST">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="username">Name</label>
+                    {% render_field form.name class="form-control" placeholder="startup name"  %}
+                </div>
+              
+                <div class="form-group">
+                  <label for="typeaddress"> Address</label>
+                  {% render_field form.address class="form-control" placeholder="Address"  %}
+                </div>
+                <div class="form-group">
+                  <label for="username">Contact </label>
+                  {% render_field form.phonenumber class="form-control" placeholder="phone number"  %}
+                </div>
+                <div class="form-group">
+                  <label for="Role">Description </label>
+                  {% render_field form.description class="form-control" placeholder="write short descripiton of your business"  %}
+                </div>
+                <!--
+                    <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                      <i class="fa fa-facebook">Facebook</i>
+                    </label>
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        <i class="fa fa-facebook ">Linkedin</i>
+                      </label>
+                      &nbsp;
+                      &nbsp;
+                      &nbsp;
+                      &nbsp;
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        <i class="fa fa-facebook">Github</i>
+                      </label>
+                     
+                  </div>
+                -->
+               
+
+                  <br>
+                
+                <!--save-->
+              
+                <button type="Submit" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm"> Save  </button>
+                <a href="{% url 'jobs' %}" type="button" class="subscribe btn btn-secondary btn-block rounded-pill shadow-sm"> Back  </a>
+
+              </form>
+            </div>
+            <!-- End -->
+  
+      
+  
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+<!-- Back to Top -->
+</div>
+
+{% endblock content %}

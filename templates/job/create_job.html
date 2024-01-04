@@ -12,7 +12,7 @@
       <!-- Start Title -->
       <div class="row mb-4">
         <div class="col-lg-8 mx-auto text-center">
-          <h1 class="display-4">Job</h1>
+          <h1 class="display-4">Post a Job</h1>
         </div>
       </div>
       <!-- End Title-->
@@ -32,12 +32,12 @@
                     <form method="POST" action="#">
                       {% csrf_token %}
                       <div class="form-group">
-                        <label for="Role">Selct-company-drop-down</label>
-                        {% render_field form.the_title class="form-control" placeholder="Title"  %}
-                    </div>
+                        <label for="Role">Select Starup name</label>
+                        {% render_field form.company class="form-control" placeholder="Leave empty is you want to select company instead"  %}
+                      </div>
                     <div class="form-group">
-                      <label for="Role">Selct-startup-drop-down</label>
-                      {% render_field form.the_title class="form-control" placeholder="Title"  %}
+                      <label for="Role">Select Company name</label>
+                      {% render_field form.startup class="form-control" placeholder="Leave empty is you want to select company instead"  %}
                   </div>
                      
                       <div class="form-group">

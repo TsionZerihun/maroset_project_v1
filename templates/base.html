@@ -69,24 +69,22 @@
                         <ul
                             class="dropdown-menu dropdown-menu-end"
                             >
-                            {% if not notification %}
+                            {% if not notifications %}
                                 <li>
                                 <a class="dropdown-item" href="#">No notification yet</a>
                                 </li>
                             {% endif %}
-                            {% for motification in notifications %}
+                            {% for notification in notifications %}
                                 {% if notification.notification_type == 'message' %}
                                 <li>
-                                <a href="{% url 'notifications' %}?goto=user_message_job&notification={{ notification.id }}&extra_id={{ notification.extra_id }}" class="dropdown-item">Another news</a>
-                                <strong>{{ notification.created_by.username }}</strong> sent you a message<br>
-                                <small>{{ notification.created_at|timesince }} ago
+                                <a href="" class="dropdown-item">
+                                <strong>{{ notification.created_by.firstname }}</strong> new message</a>
                                  </li>
                                 {% elif notification.notification_type == 'application' %}
 
                                 <li>
-                                <a class="dropdown-item" href="#">Applicants </a>
-                                <strong>{{ notification.created_by.username }}</strong> applied for your job<br>
-                                <small>{{ notification.created_at|timesince }} ago</small>
+                                <a class="dropdown-item" href="#"> 
+                                <strong>{{ notification.created_by.username.firstname }}</strong> status update for job title ({{notification.jobname}} )</a>
 
                                 </li>
                                 {% endif %}
@@ -94,10 +92,10 @@
                         </ul>
                     </div>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-comments"></i></a>
+                        <a href="{% url 'user_with_admin_chat' request.user.pk %}" class="nav-link dropdown-toggle" ><i class="fas fa-comments"></i></a>
                         
                     </div>
-                    
+
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><img
                             src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
@@ -121,11 +119,7 @@
                       </ul>
 
                     </div>
-
-                    
-                    
-
-                    <a href="{% url 'logout' %}" class="nav-item nav-link">Log Out</a>
+                    <a href="{% url 'logout' %}" class="nav-item nav-link">log out</a>
 
                 </div>
             </div>

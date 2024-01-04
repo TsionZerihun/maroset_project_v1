@@ -1,0 +1,128 @@
+{% load static %}
+{% load humanize %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>Dashboard 3</title>
+     <!--chat-->
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+ <link rel="stylesheet" href="{% static 'css/chat.css' %}">
+ <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+
+    <!-- Fontfaces CSS-->
+    <link href="{% static 'vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="{% static 'vendor/bootstrap-4.1/bootstrap.min.css' %}" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+     <!-- Vendor CSS-->
+     <link href="{% static 'vendor/animsition/animsition.min.css' %}" rel="stylesheet" media="all">
+     <link href="{% static 'vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css' %}" rel="stylesheet" media="all">
+     <link href="{% static 'vendor/wow/animate.css' %}" rel="stylesheet" media="all">
+     <link href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}" rel="stylesheet" media="all">
+     <link href="{% static 'vendor/slick/slick.css' %}" rel="stylesheet" media="all">
+     <link href="{% static 'vendor/select2/select2.min.css' %}" rel="stylesheet" media="all">
+     <link href="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.css' %}" rel="stylesheet" media="all">
+
+
+    <!-- Main CSS-->
+    <link href="{% static 'css/theme.css' %}" rel="stylesheet" media="all">
+    
+   
+    <!--button-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'admincss/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admincss/style.css' %}">
+
+
+
+</head>
+    <!--chat-->
+    <div class="container">
+        <div class="row clearfix">
+        <div class="">
+        <div class="card chat-app">
+      
+        <div class="chat">
+        <div class="chat-header clearfix">
+        <div class="row">
+        <div class="col-lg-6">
+        
+       
+        
+        </div>
+        </div>
+        <div id="chats1" class="chat-history">
+            hiiiiiiiiiiiiiiiiiii
+            <ul class="m-b-0">
+            <li class="clearfix">
+            <div class="message-data text-right">
+            <span class="message-data-time"></span>
+            </div>
+            {% for message in messages %}
+            {% if message.created_by.id is user.id %}
+            <span class="message-data-time float-right">{{message.created_at|naturaltime}}</span>
+            <br>
+            <div class="message other-message float-right">{{message.content}}</div>
+            
+
+            {% else %}
+         
+
+            <span class="message-data-time float-left">{{message.created_at|naturaltime}}</span>
+            <br>
+            
+            <div class="message other-message float-left">{{message.content}}</div>
+            {% endif %}
+
+            </li>
+            <li class="clearfix">
+            <div class="message-data">
+            </div>
+            {% endfor %}
+            <div class="message-data">
+            
+            </ul>
+            </div>
+            <form method="POST" action=".">
+                {% csrf_token %}
+
+        <div class="chat-message clearfix">
+        <div class="input-group mb-0">
+      
+        <input type="text" class="form-control" placeholder="Enter text here..." name="content" id="id_content">
+        <div class="input-group-prepend">
+        <button class="input-group-text"><i class="fa fa-send"></i></button>
+        </div>
+
+     </form>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript">
+	
+</script>
+
+</body>
+
+</html>
+<!-- end document-->

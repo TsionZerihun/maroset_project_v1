@@ -10,13 +10,12 @@ def create_job(request):
         if form.is_valid():
             var = form.save(commit=False)
             var.user = request.user
-            var.company = request.user.company
             var.save()
             messages.info(request, 'New job has been create')
-            return redirect('dashboard')
+            return redirect('jobs')
         else:
             messages.warning(request, 'something went wrong')
-            return redirect('job')
+            return redirect('jobs')
 
     else:
         form = CreateJobForm()
