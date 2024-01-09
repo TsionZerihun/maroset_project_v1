@@ -27,6 +27,8 @@ class Job(models.Model):
     industry = models.ForeignKey(Indusrty, on_delete=models.DO_NOTHING, null=True, blank=True)
     job_status = models.CharField(max_length=20, default='Pending', choices=job_status_choices, null=True, blank=True)
     admin_comment = models.TextField(null=True, blank=True)
+    is_reported = models.BooleanField(default=False)
+
     
     #def __str__(self):
     #    return self.the_title
@@ -46,4 +48,13 @@ class ConversationMessageJob(models.Model):
 
     class Meta:
         ordering = ['created_at']
+
+
+
+class ReportedJob(models.Model):
+    reported_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    reported_job = models.ForeignKey(Job, on_delete=models.CASCADE)
+    description = models.CharField(max_length=100, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
 

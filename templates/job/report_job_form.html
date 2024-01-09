@@ -1,0 +1,72 @@
+{% extends 'job/base.html' %}
+{% load widget_tweaks %}
+
+
+
+
+
+{% block content %}
+
+<!-- main -->
+<div class="container py-5">
+      <!-- Start Title -->
+      <div class="row mb-4">
+        <div class="col-lg-8 mx-auto text-center">
+          <h1 class="display-4"></h1>
+        </div>
+      </div>
+      <!-- End Title-->
+
+      <div class="row">     
+        <!-- Main col-->
+        <div class="col-lg-7 mx-auto">
+
+            <!-- Main bg-->
+            <div class="bg-white rounded-lg shadow-sm p-5">
+                 
+             
+            {% if is_reported == False %}
+              <!--Generail-info-->
+                  <div id="nav-tab-card" class="tab-pane fade show active">
+                    <h1></h1>
+                    <form method="POST" action="#">
+                      {% csrf_token %}
+                
+                  <div class="form-group">
+                    <label for="Role">Tell us why are want to report this job</label>
+                    {% render_field form.description class="form-control" placeholder="Requirement"  %}
+                </div>
+              
+          
+           
+                   
+
+
+                    <button type="submit" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm"> Save</button>
+
+                    <a href="{% url 'jobs' %}" type="submit" class="subscribe btn btn-secondary btn-block rounded-pill shadow-sm">Go Back</a>
+  
+                  </form>
+                  
+
+                  </div>
+                  <!--end-general-->
+
+            {% else %}
+            <h5><span class="text-success">You have already reported this job. Thank you for the feedbacks!!</span></h5>
+            {% endif %}
+
+
+
+            </div>
+             <!--End Main bg-->
+        </div>
+        <!--End Main col-->
+
+      </div>
+      <!--End Main row-->
+
+
+</div>
+
+{% endblock content %}

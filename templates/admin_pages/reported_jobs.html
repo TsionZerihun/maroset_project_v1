@@ -10,39 +10,38 @@
                 <tr>
                     <th scope="col">Date</th>
                     <th scope="col">Reported By</th>
-                    <th scope="col">contact job owner</th>
+                    <th scope="col">job owner</th>
                     <th scope="col">jOB Title</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
+                {% for job in reported_jobs %}
                 <tr>
                     
                     <td>
-                        Feb 15, 2023
+                        {{job.created_at}}
                     </td>
-                    <td>
-                        <img alt="..." src="https://bytewebster.com/img/logo.png" class="avatar avatar-xs rounded-circle me-2">
-                        <a class="text-heading font-semibold" href="">
-                            Bytewebster
-                        </a>
-                        
+                    <td>  
+                        {{job.reported_by}}                      
                     </td>
-                    <td>
-                        
+                    <td>   
+                        {{job.reported_job.user}}
+
                     </td>
                     <td>
                         <span class="">
-                            <i class="bg-success"></i>Software Engineer
+                            <i class="bg-success"></i>title
                         </span>
                     </td>
                     <td class="text-end">
-                        <a href="#" class="marosetbtn btn btn-sm btn-primary "> GO TO BLACKLIST</a>
-                        &nbsp;
-                        <a href="#" class="btn btn-sm btn-outline-info">View Detail</a>   
+                        <a href="{% url 'report-detail' pk=job.pk %}" class="btn btn-sm btn-outline-info">View Report Detail</a>  
+                        <a href="{% url 'about-report-detail' pk=job.pk %}" class="btn btn-sm btn-outline-info">View Job Detail</a>   
+ 
                     </td>
                 </tr>
-              
+                {% endfor %}
+
                
             </tbody>
         </table>

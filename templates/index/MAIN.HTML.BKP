@@ -158,7 +158,7 @@
             <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
                
                 <div class="tab-content">
-                    {% for job in filter_paginate %}
+                    {% for job in filter.qs %}
                     <div id="tab-1" class="tab-pane fade show p-0 active">
                         <div class="job-item p-4 mb-4">
                             <div class="row g-4">
@@ -182,25 +182,6 @@
                             </div>
                         </div>
                       {% endfor %}
-                      <div class="pagination">
-                        <span class="step-links">
-                            {% if filter_paginate.has_previous %}
-                                <a href="?page=1">&laquo; First</a>
-                                <a href="?page={{ filter_paginate.previous_page_number }}">&laquo; Previous</a>
-                            {% endif %}
-
-                            
-                        </span class="current">
-                            Page {{ filter_paginate.number }} of {{ filter_paginate.paginator.num_pages }}
-                        </span>
-
-
-                            {% if filter_paginate.has_next %}
-                            <a href="?page={{ filter_paginate.next_page_number }}">&raquo; Next</a>
-                            <a href="?page={{ filter_paginate.paginator.num_pages }}">Last</a>
-                            {% endif %}
-                        </span>
-                      </div>
                         <a class="btn btn-secondary py-3 px-5" href="">Browse More Jobs</a>
                     </div>
                     
@@ -220,21 +201,21 @@
                         <a class="cat-item rounded p-4" href="">
                             <i class="fa fa-3x fa-mail-bulk text-secondary mb-4"></i>
                             <h6 class="mb-3">Sofware Development</h6>
-                            <p class="mb-0">{{softwaredeveloper}} Vacancy</p>
+                            <p class="mb-0">123 Vacancy</p>
                         </a>
                     </div>
                     <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
                         <a class="cat-item rounded p-4" href="">
                             <i class="fa fa-3x fa-headset text-secondary mb-4"></i>
                             <h6 class="mb-3">Graphics Design</h6>
-                            <p class="mb-0">{{graphicsdesign}} Vacancy</p>
+                            <p class="mb-0">123 Vacancy</p>
                         </a>
                     </div>
                     <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
                         <a class="cat-item rounded p-4" href="">
                             <i class="fa fa-3x fa-user-tie text-secondary mb-4"></i>
                             <h6 class="mb-3">Social Media Management</h6>
-                            <p class="mb-0">{{socialmediamanagement}} Vacancy</p>
+                            <p class="mb-0">123 Vacancy</p>
                         </a>
                     </div>
                     <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
@@ -248,28 +229,28 @@
                         <a class="cat-item rounded p-4" href="">
                             <i class="fa fa-3x fa-chart-line text-secondary mb-4"></i>
                             <h6 class="mb-3">Enginering</h6>
-                            <p class="mb-0">{{projectmanagement}} Vacancy</p>
+                            <p class="mb-0">123 Vacancy</p>
                         </a>
                     </div>
                     <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
                         <a class="cat-item rounded p-4" href="">
                             <i class="fa fa-3x fa-hands-helping text-secondary mb-4"></i>
                             <h6 class="mb-3">Sales & Communication</h6>
-                            <p class="mb-0">{{Sales}} Vacancy</p>
+                            <p class="mb-0">123 Vacancy</p>
                         </a>
                     </div>
                     <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
                         <a class="cat-item rounded p-4" href="">
                             <i class="fa fa-3x fa-book-reader text-secondary mb-4"></i>
                             <h6 class="mb-3">Teaching & Translation</h6>
-                            <p class="mb-0">{{teachingtranslation}} Vacancy</p>
+                            <p class="mb-0">123 Vacancy</p>
                         </a>
                     </div>
                     <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
                         <a class="cat-item rounded p-4" href="">
                             <i class="fa fa-3x fa-drafting-compass text-secondary mb-4"></i>
                             <h6 class="mb-3">Others</h6>
-                            <p class="mb-0">{{others}} Vacancy</p>
+                            <p class="mb-0">123 Vacancy</p>
                         </a>
                     </div>
                 </div>
@@ -370,113 +351,73 @@
         <!-- Testimonial End -->
 
          <!-- FAQ Start -->
-         <div class="accordion accordion-flush" id="accordionExample">
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="flush-headingOne">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                        What is Maroset?
-                    </button>
-                  </h2>
-                  <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                    <div class="text-start accordion-body">Maroset is a platform dedicated to connecting Ethiopian professionals with only remote job opportunities. We provide a wide range of services to both job seekers and employers in Ethiopia..</div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="flush-headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                        What types of jobs are posted on Maroset?
-                    </button>
-                  </h2>
-                  <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                    <div class="text-start accordion-body">On Maroset, only remote job vacancies that can be done remotely are posted. This allows job seekers to find opportunities that offer flexibility and the ability to work from anywhere.</div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="flush-headingThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                        How can I find remote job opportunities on Maroset?
-                    </button>
-                  </h2>
-                  <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                    <div class="text-start accordion-body">To find remote job opportunities, simply join our Telegram channel @Maroset and our website maroset.com. We regularly approve remote job openings from various industries and sectors. Stay tuned and browse through the job listings to find suitable positions.</div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingFour">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                        How do I apply for a remote job listing on Maroset?
-                      </button>
-                    </h2>
-                    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-                      <div class="text-start accordion-body">When you find a job listing that interests you, simply click on the "Apply" button provided within the posting. Our dedicated website/bot will guide you through the application process. You can write an application cover letter within our website/bot, and it will be submitted for evaluation by the employers</div>
+         <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="container">
+                <h1 class="text-center mb-5">Frequently Asked Question</h1>
+                <div class="accordion w-100" id="basicAccordion">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
+                          data-mdb-target="#basicAccordionCollapseOne" aria-expanded="false" aria-controls="collapseOne">
+                          What is Maroset?
+                        </button>
+                      </h2>
+                      <div id="basicAccordionCollapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                        data-mdb-parent="#basicAccordion" style="">
+                        <div class="accordion-body">
+                          <strong>This is the first item's accordion body.</strong> It is shown by default,
+                          until the collapse plugin adds the appropriate classes that we use to style each
+                          element. These classes control the overall appearance, as well as the showing and
+                          hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+                          our default variables. It's also worth noting that just about any HTML can go within
+                          the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingFive">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
-                        How can employers post remote job opportunities on Maroset?
-                      </button>
-                    </h2>
-                    <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
-                      <div class="text-start accordion-body">Employers can easily post their remote job vacancies through our dedicated website/bot. By accessing the website/bot, employers can submit job descriptions, requirements, and any specific instructions for application. Our team will review the submissions and approve the postings before they appear on our platform.</div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingSix">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
-                        Can employers post non-remote job vacancies on Maroset?
-                      </button>
-                    </h2>
-                    <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
-                      <div class="text-start accordion-body">No, Maroset specifically focuses on remote job vacancies to be done remotely or from the comfort of your zone. </div>
-                    </div>
-                  </div>
 
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingSeven">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven">
-                        How does Maroset verify the legitimacy of job vacancies?
-                      </button>
-                    </h2>
-                    <div id="flush-collapseSeven" class="accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
-                      <div class="text-start accordion-body">To ensure the legitimacy of job vacancies, Maroset employs a thorough verification process. We verify the authenticity of companies cooperated with us by registering them and we verify by requesting their business address and social media presence, including their websites while posting a job vacancy. This helps us maintain a safe and trustworthy environment for job seekers. </div>
+
+                    
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
+                          data-mdb-target="#basicAccordionCollapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          What types of jobs are posted on Maroset?
+                        </button>
+                      </h2>
+                      <div id="basicAccordionCollapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-mdb-parent="#basicAccordion" style="">
+                        <div class="accordion-body">
+                          <strong>This is the second item's accordion body.</strong> It is hidden by default,
+                          until the collapse plugin adds the appropriate classes that we use to style each
+                          element. These classes control the overall appearance, as well as the showing and
+                          hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+                          our default variables. It's also worth noting that just about any HTML can go within
+                          the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
+                          data-mdb-target="#basicAccordionCollapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          How can I find remote job opportunities on Maroset?
+                        </button>
+                      </h2>
+                      <div id="basicAccordionCollapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-mdb-parent="#basicAccordion" style="">
+                        <div class="accordion-body">
+                          <strong>This is the third item's accordion body.</strong> It is hidden by default,
+                          until the collapse plugin adds the appropriate classes that we use to style each
+                          element. These classes control the overall appearance, as well as the showing and
+                          hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+                          our default variables. It's also worth noting that just about any HTML can go within
+                          the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingEight">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEight" aria-expanded="false" aria-controls="flush-collapseEight">
-                        Can users run paid advertising of their goods and services on the platform?
-                      </button>
-                    </h2>
-                    <div id="flush-collapseEight" class="accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
-                      <div class="text-start accordion-body">Yes, users have the opportunity to run paid advertising of their goods and services on our  platform. This allows businesses and individuals to reach a targeted audience of Ethiopian professionals and promote their offerings. </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingNine">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseNine" aria-expanded="false" aria-controls="flush-collapseNine">
-                        How many companies and employers has Maroset cooperated with?
-                      </button>
-                    </h2>
-                    <div id="flush-collapseNine" class="accordion-collapse collapse" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
-                      <div class="text-start accordion-body">Maroset has cooperated with numerous companies and employers, building a strong network of opportunities for Ethiopian professionals. By verifying employers who post remote job vacancies, we ensure that the job opportunities posted on our platform are genuine and trustworthy.
-                    </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTen">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTen" aria-expanded="false" aria-controls="flush-collapseTen">
-                        How can I report fraudulent or inappropriate job postings on Maroset?                      </button>
-                    </h2>
-                    <div id="flush-collapseTen" class="accordion-collapse collapse" aria-labelledby="flush-headingTen" data-bs-parent="#accordionFlushExample">
-                      <div class="text-start accordion-body">If you come across any suspicious or fraudulent job postings on Maroset platform, please report them immediately to our team via the "Report" feature within our website/bot. We take such reports seriously and will take appropriate action to maintain the quality and legitimacy of the job listings.
-                    </div>
-                    </div>
-                  </div>
-              </div>
-            
-          </div>
+            </div>
+        </div>
         <!-- FAQ End -->
         
 

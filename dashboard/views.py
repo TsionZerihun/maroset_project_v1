@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from job.models import Job, ApplyJob, ConversationMessageJob
+from job.models import Job, ApplyJob, ConversationMessageJob,ReportedJob
 from django.contrib import messages
 from job.form import JobAdminResponseForm, CreateJobForm, UpdateJobForm
 from users.models import User,ConversationMessageUser,Notification
@@ -13,12 +13,11 @@ def dashbaord(request):
 
 def apply(request):
     jobs = Job.objects.filter(is_available=True).order_by('-timestamp')
-   
-
     context = {'jobs': jobs}
     return render(request, 'dashbaord/apply.html', context)
 
 def applied(request):
+
     jobs = ApplyJob.objects.filter(user=request.user)
     context = {'jobs': jobs}
     return render(request, 'dashbaord/applied.html', context)
@@ -47,7 +46,9 @@ def admin_view_users(request):
 
 
 def admin_reported_jobs(request):
-    return render(request, 'admin_pages/reported_jobs.html')
+    reported_jobs = ReportedJob.objects.filter()
+    context = {'reported_jobs': reported_jobs}
+    return render(request, 'admin_pages/reported_jobs.html', context)
 
 def admin_jobs(request):
     jobs = Job.objects.filter()
@@ -215,3 +216,7 @@ def notifications(request):
             return redirect('user_message_job', application_id=notification.extra_id)
     
     return render(request, 'base.html')
+
+
+
+

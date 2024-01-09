@@ -1,0 +1,51 @@
+{% extends 'job/base.html' %}
+{% load widget_tweaks %}
+
+
+
+
+
+{% block content %}
+<div class="card shadow border-0 mb-7">
+    <div class="card-header">
+        <h5 class="mb-0">All Applicants for position</h5>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover table-nowrap">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Created at</th>
+                    <th scope="col">reported by</th>
+                    <th scope="col">Description</th>
+
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for reported in reported_job %}
+                    <td> 
+                        {{reported.created_at}}   
+                    </td>
+                    
+                    <td>
+                        {{reported.reported_by}}   
+
+                    </td>
+                    <td>
+                        {{reported.description}}   
+ 
+                    </td>
+                 
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+   
+</div>
+
+{% endblock content %}

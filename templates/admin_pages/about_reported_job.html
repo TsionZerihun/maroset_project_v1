@@ -1,0 +1,67 @@
+{% extends 'job/base.html' %}
+{% load widget_tweaks %}
+
+
+
+
+
+{% block content %}
+<div class="card shadow border-0 mb-7">
+    <div class="card-header">
+        <h5 class="mb-0">All Applicants for position</h5>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover table-nowrap">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Job Title</th>
+                    <th scope="col">JobOwner</th>
+                    <th scope="col">Posted at</th>
+                    <th scope="col">Comapny</th>
+                    <th scope="col">Offer</th>
+                    <th scope="col">Status</th>
+
+
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for reported in reported_job %}
+                    <td> 
+                        {{reported.reported_job.the_title}}   
+                    </td>
+                    
+                    <td>
+                        {{reported.reported_job.user}}   
+
+                    </td>
+                    <td>
+                        {{reported.reported_job.timestamp}}   
+ 
+                    </td>
+                    <td>
+                        {{reported.reported_job.company}}   
+ 
+                    </td>
+                    <td>
+                        {{reported.reported_job.salary}}   
+ 
+                    </td>
+                    <td>
+                        {{reported.reported_job.job_status}}   
+ 
+                    </td>
+                 
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+   
+</div>
+
+{% endblock content %}
