@@ -7,6 +7,7 @@ from resume.models import Resume
 from company.models import Company
 from django.contrib.auth.decorators import login_required
 from .models import Notification,ConversationMessageUser
+from django.utils.safestring import mark_safe
 
 
 
@@ -24,7 +25,7 @@ def register_applicant(request):
                 messages.info(request, 'account created sucessfully!!')
                 return redirect('login')
         else:
-            messages.warning(request ,'password-rror')
+            messages.warning(request, mark_safe("password must be 8 characters <br/> must contain special character <br/> must contain number"))
             return redirect('register-applicant')
     else:
          form = RegisterUserForm()
@@ -43,22 +44,21 @@ def login_user(request):
         password = request.POST.get('password')
           
         user = authenticate(request, username=email, password=password)
-        if request.user.is_superuser:
-            login(request, user)
-            return redirect('administrator')
-        
-        
-        elif user is not None and user.is_active:
-            login(request, user)
-            return redirect('dashboard')
-        
-        elif user is not request.user.is_active:
-            return redirect('blocked')
-
-
+        if user is not None:
+            if user.is_superuser:
+                login(request, user)
+                return redirect('administrator')
+            
+            if user.is_blocked:
+                login(request, user)
+                return redirect('blocked')
+            
+            if not user.is_blocked:
+                login(request, user)
+                return redirect('dashboard')
         else:
-             messages.warning(request, 'Wrong email or password')
-             return redirect('login')
+            messages.warning(request, 'Wrong email or password')
+            return redirect('login')
      else:
           return render(request, 'users/login.html')
      

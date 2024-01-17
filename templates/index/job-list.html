@@ -45,8 +45,8 @@
         <!-- Spinner End -->
 
 
-         <!-- Navbar Start -->
-         <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+           <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
             <a href="{% url 'index' %}" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
                 <img class="logoimg flex-shrink-0 img-fluid rounded logoimg" src="{% static 'img/logo1.png' %}" alt="" style="width: 110px; height: 110px;">
                 <h1 class="logo m-0 text-secondary">Maroset</h1>
@@ -57,24 +57,18 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
-                    <a href="{% url 'index' %}" class="nav-item nav-link --pink">Home</a>
-                    <a href="" class="nav-item nav-link">About</a>
+                    <a href="{% url 'index' %}" class="nav-item nav-link active --pink">Home</a>
+                    <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class=" active nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
                         <div class="dropdown-menu rounded-0 m-0">
                             <a href="{% url 'job-list' %}" class="dropdown-item">Job List</a>
-                            <a href="" class="dropdown-item">Job Detail</a>
                         </div>
                     </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                            <a href="" class="dropdown-item">Job Category</a>
-                            <a href="" class="dropdown-item">Testimonial</a>
-                        </div>
-                    </div>
-                    <a href="" class="nav-item nav-link">Contact</a>
+                    
+                    <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
                 </div>
+                <a href="{% url 'login' %}" class="btn btn-secondary rounded-0 py-4 px-lg-5 d-none d-lg-block">Login <i class="fa fa-arrow-right ms-3"></i></a>
             </div>
         </nav>
         <!-- Navbar End -->
@@ -107,17 +101,10 @@
                                 <h6 class="mt-n1 mb-0">All</h6>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="d-flex align-items-center text-start mx-3 pb-3" data-bs-toggle="pill" href="#tab-2">
-                                <h6 class="mt-n1 mb-0">Full Time</h6>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill" href="#tab-3">
-                                <h6 class="mt-n1 mb-0">Part Time</h6>
-                            </a>
-                        </li>
+                       
                     </ul>
+
+                    
                     <div class="tab-content">
                         {% if jobs %}
                         {% for job in jobs %}
@@ -134,7 +121,7 @@
                                         </div>
                                         <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
                                             <div class="d-flex mb-3">
-                                                <a class="btn btn-secondary" href="{% url 'job-detail' job.pk %}">Apply Now</a>
+                                                <a class="btn btn-secondary" href="{% url 'login' %}">Apply Now</a>
                                             </div>
                                             <small class="text-truncate"><i class="far fa-calendar-alt text-secondary me-2"></i>Created: {{job.timestamp|naturaltime}}</small>
                                         </div>
@@ -142,57 +129,33 @@
                                 </div>
                                 {% endfor %}
                                 {% endif %}
+                                <div class="pagination">
+                                    <span class="step-links">
+                                        {% if jobs.has_previous %}
+                                            <a href="?page=1">&laquo; First</a>
+                                            <a href="?page={{ jobs.previous_page_number }}">&laquo; Previous</a>
+                                        {% endif %}
+            
+                                        
+                                    </span class="current">
+                                        Page {{ jobs.number }} of {{ jobs.paginator.num_pages }}
+                                    </span>
+            
+            
+                                        {% if jobs.has_next %}
+                                        <a href="?page={{ jobs.next_page_number }}">&raquo; Next</a>
+                                        <a href="?page={{ jobs.paginator.num_pages }}">Last</a>
+                                        {% endif %}
+                                    </span>
+                                  </div>
                             
-                                <a class="btn btn-secondary py-3 px-5" href="">Browse More Jobs</a>
                             </div>
+
                         
-                        <div id="tab-2" class="tab-pane fade show p-0">
-                            <div class="job-item p-4 mb-4">
-                                <div class="row g-4">
-                                    <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="{% static 'img/com-logo-1.jpg' %}" alt="" style="width: 80px; height: 80px;">
-                                        <div class="text-start ps-4">
-                                            <h5 class="mb-3">Software Engineer</h5>
-                                            <span class="text-truncate me-3"><i class="far fa-clock text-secondary me-2"></i>Full Time</span>
-                                            <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-secondary me-2"></i>$123 - $456</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                        <div class="d-flex mb-3">
-                                            <a class="btn btn-light btn-square me-3" href=""><i class="far fa-heart text-secondary"></i></a>
-                                            <a class="btn btn-secondary" href="">Apply Now</a>
-                                        </div>
-                                        <small class="text-truncate"><i class="far fa-calendar-alt text-secondary me-2"></i>Date Line: 01 Jan, 2045</small>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <a class="btn btn-secondary py-3 px-5" href="">Browse More Jobs</a>
-                        </div>
-                        <div id="tab-3" class="tab-pane fade show p-0">
-                            <div class="job-item p-4 mb-4">
-                                <div class="row g-4">
-                                    <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="{% static 'img/com-logo-1.jpg' %}" alt="" style="width: 80px; height: 80px;">
-                                        <div class="text-start ps-4">
-                                            <h5 class="mb-3">Software Engineer</h5>
-                                            <span class="text-truncate me-3"><i class="far fa-clock text-secondary me-2"></i>Full Time</span>
-                                            <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-secondary me-2"></i>$123 - $456</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                        <div class="d-flex mb-3">
-                                            <a class="btn btn-light btn-square me-3" href=""><i class="far fa-heart text-secondary"></i></a>
-                                            <a class="btn btn-secondary" href="">Apply Now</a>
-                                        </div>
-                                        <small class="text-truncate"><i class="far fa-calendar-alt text-secondary me-2"></i>Date Line: 01 Jan, 2045</small>
-                                    </div>
-                                </div>
-                            </div>
-                           
-                            <a class="btn btn-secondary py-3 px-5" href="">Browse More Jobs</a>
-                        </div>
+                        
                     </div>
+
+                    
                 </div>
             </div>
         </div>
@@ -243,7 +206,7 @@
 
 
         <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-secondary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+        <a href="{% url 'job-list' %}" class="btn btn-lg btn-secondary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
     <!-- JavaScript Libraries -->

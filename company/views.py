@@ -17,7 +17,6 @@ def create_company(request):
             user.has_company = True
             var.save()
             user.save()
-            messages.info(request, 'account created sucessfully!!')
             return redirect('company')
         else:
             messages.warning(request, 'something went wrong')
@@ -30,16 +29,14 @@ def create_company(request):
 # view company details
 def company_details(request, pk):
     company = Company.objects.get(pk=pk)
-    startup = Startup.objects.get(pk=pk)
-    context = {'company': company,'startup': startup}
+    context = {'company': company}
     return render(request, 'company/company_detail.html', context)
 
 #startup
 
 def startup_details(request, pk):
-    company = Company.objects.get(pk=pk)
     startup = Startup.objects.get(pk=pk)
-    context = {'company': company,'startup': startup}
+    context = {'startup': startup}
     return render(request, 'company/startup_detail.html', context)
 def create_startup(request):
     if request.method == 'POST':
@@ -53,7 +50,6 @@ def create_startup(request):
             user.has_company = True
             var.save()
             user.save()
-            messages.info(request, 'account created sucessfully!!')
             return redirect('company')
         else:
             messages.warning(request, 'something went wrong')
@@ -72,10 +68,9 @@ def update_company(request, pk):
         form = UpdateCompanyForms(request.POST, instance=company)
         if form.is_valid():
             form.save()
-            messages.info(request, 'job-update')
             return redirect('company')
         else:
-            messages.warning(request, 'something went wrong')
+            messages.warning(request, '')
 
             
 
@@ -95,7 +90,7 @@ def update_startup(request, pk):
             messages.info(request, 'job-update')
             return redirect('company')
         else:
-            messages.warning(request, 'something went wrong')
+            messages.warning(request, '')
 
             
 

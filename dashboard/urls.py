@@ -22,7 +22,11 @@ urlpatterns = [
     path('admin/admin_message_job/<int:pk>/', views.message_job, name='job-messages'),
     path('chat/<int:pk>/', views.user_message_job, name='job-owner-messages'),
     path('admin/messages', views.admin_chat_users, name='admin_messages'),
-    path('admin/personal_chat/<int:pk>/', views.admin_with_one_user_chat, name='chat_specific_user')
+    path('admin/personal_chat/<int:pk>/', views.admin_with_one_user_chat, name='chat_specific_user'),
+    path('admin/logout', views.logout_admin, name='admin_logout')
+
+
+
 
 
 

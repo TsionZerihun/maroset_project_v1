@@ -15,7 +15,6 @@ def update_resume(request):
             user.has_resume = True
             user.save()
             var.save()
-            messages.info(request, 'Your resume sucessfully created!!')
             return redirect('update-resume')
         else:
             messages.warning(request, 'something went wrong')

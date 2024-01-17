@@ -7,9 +7,11 @@ class User(AbstractUser):
     email = models.EmailField(unique=True)
     is_recruiter = models.BooleanField(default=False)
     is_applicant = models.BooleanField(default=False)
+    name = models.CharField(max_length=30, null=True, blank=True)
 
     has_resume = models.BooleanField(default=False)
     has_company = models.BooleanField(default=False)
+    is_blocked = models.BooleanField(default=False)
 
 
 class Notification(models.Model):

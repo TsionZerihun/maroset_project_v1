@@ -25,10 +25,8 @@
                                 </th>
                                 <th>name</th>
                                 <th>email</th>
-                                <th>description</th>
                                 <th>date</th>
                                 <th>status</th>
-                                <th>View Profile</th>
                                 <th>Action</th>
 
                                 <th></th>
@@ -44,14 +42,13 @@
                                         <span class="au-checkmark"></span>
                                     </label>
                                 </td>
-                                <td>{{user.email}}</td>
+                                <td>{{user.resume.first_name}}</td>
                                 <td>
-                                    <span class="block-email">lori@example.com</span>
+                                    <span class="block-email">{{user.email}}</span>
                                 </td>
-                                <td class="desc">Place Holder</td>
                                 <td>2018-09-27 02:12</td>
                                 <td>
-                                    {% if user.is_active %}
+                                    {% if not user.is_blocked == True %}
                                     <span class="status--process">Active
                                     </span>
                                 {% else %}
@@ -59,12 +56,7 @@
                                 </span>
                                 </td>
                                 {% endif %}
-                                <td>
-                                    <img alt="..." src="https://bytewebster.com/img/logo.png" class="avatar avatar-xs rounded-circle me-2">
-                                    <a class="text-heading font-semibold" href="">
-                                        Bytewebster
-                                    </a>
-                                </td>
+                                
                                 <td>
                                     <div class="table-data-feature">
                                         <button class="item" data-toggle="tooltip" data-placement="top" title="block">
@@ -82,7 +74,29 @@
                             {% endfor %}
                         </tbody>
                     </table>
+                        <div class="pagination">
+                            <span class="step-links">
+                                {% if jobs.has_previous %}
+                                    <a href="?page=1">&laquo; First</a>
+                                    <a href="?page={{ jobs.previous_page_number }}">&laquo; Previous</a>
+                                {% endif %}
+                    
+                                
+                            </span class="current">
+                                Page {{ jobs.number }} of {{ jobs.paginator.num_pages }}
+                            </span>
+                    
+                    
+                                {% if jobs.has_next %}
+                                <a href="?page={{ jobs.next_page_number }}">&raquo; Next</a>
+                                <a href="?page={{ jobs.paginator.num_pages }}">Last</a>
+                                {% endif %}
+                            </span>
+                          </div>
+                    
                 </div>
+
+             
             </div>
         </div>
     </div>

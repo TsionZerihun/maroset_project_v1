@@ -28,6 +28,8 @@ urlpatterns = [
     path('company/', include('company.urls')),
     path('resume/', include('resume.urls')),
     path('', views.index, name="index"),
+    path('about/', views.about, name="about"),
+    path('contact/', views.contact, name="contact"),
     path('job-list', views.job_list, name="job-list"),
     path('job-deatil/<int:pk>/', views.job_detail, name="job-detail"),
 

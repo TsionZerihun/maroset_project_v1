@@ -12,7 +12,6 @@ def create_job(request):
             var = form.save(commit=False)
             var.user = request.user
             var.save()
-            messages.info(request, 'New job has been create')
             return redirect('jobs')
         else:
             messages.warning(request, 'something went wrong')
@@ -44,6 +43,24 @@ def Update_job(request, pk):
         context = {'form' : form}
         return render(request, 'job/update_job.html', context)
     
+# Update jobs
+def admin_Update_job(request, pk):
+    job = Job.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = UpdateJobForm(request.POST, instance=job)
+        if form.is_valid():
+            form.save()
+            return redirect('administrator')
+        else:
+            messages.warning(request, 'something went wrong')
+
+            
+
+    else:
+        form = UpdateJobForm(instance=job)
+        context = {'form' : form}
+        return render(request, 'job/admin_update_job.html', context)
+    
 
 def apply_to_job(request, pk):
     if request.user.is_authenticated:
@@ -56,7 +73,6 @@ def apply_to_job(request, pk):
                 job=job,
                 user = request.user
             )
-            messages.info(request, 'You Have Sucessfully applied')
             return redirect ('dashboard')   
     else:
         messages.info(request, 'Please login')
@@ -79,7 +95,6 @@ def report_job(request, pk):
             var.reported_by = reported_by
             var.reported_job = reported_job
             var.save()
-            messages.info(request, 'Job sucessfully reported')
             return redirect('jobs')
         else:
             messages.warning(request, 'something went wrong')

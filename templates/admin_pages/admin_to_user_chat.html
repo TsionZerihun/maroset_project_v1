@@ -329,7 +329,7 @@
 
             {% for user in users%}
        <a href="{% url 'chat_specific_user' pk=user.pk %}"> <li class="">
-        <div class="name">{{user.id}}</div>
+        <div class="name">{{user.email}}</div>
 
         </li>
         {% endfor %}

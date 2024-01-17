@@ -7,23 +7,45 @@ from django.contrib.auth.decorators import login_required
 from job.views import all_applicant
 from users.utilities import create_notification
 from company.models import Company, Startup
+from resume.models import Resume
+from django.core.paginator import Paginator
+from django.contrib.auth import authenticate, login, logout
 
+
+
+@login_required
 def dashbaord(request):
-    return render(request, 'dashbaord/dashboard.html')
+    resume = Resume.objects.filter(user=request.user)
+    context = {'resume': resume}
+    return render(request, 'dashbaord/dashboard.html',context)
+   
 
+@login_required
 def apply(request):
-    jobs = Job.objects.filter(is_available=True).order_by('-timestamp')
+    the_jobs = Job.objects.filter(is_available=True).order_by('-timestamp')
+    p = Paginator(the_jobs,2)
+    page = request.GET.get('page')
+    jobs= p.get_page(page)
     context = {'jobs': jobs}
     return render(request, 'dashbaord/apply.html', context)
 
+@login_required
 def applied(request):
 
-    jobs = ApplyJob.objects.filter(user=request.user)
+    the_jobs = ApplyJob.objects.filter(user=request.user).order_by('-timestamp')
+    p = Paginator(the_jobs,2)
+    page = request.GET.get('page')
+    jobs= p.get_page(page)
+    context = {'jobs': jobs}
     context = {'jobs': jobs}
     return render(request, 'dashbaord/applied.html', context)
 
+@login_required
 def jobs(request):
-    jobs = Job.objects.filter(user=request.user)
+    the_jobs = Job.objects.filter(user=request.user).order_by('-timestamp')
+    p = Paginator(the_jobs,2)
+    page = request.GET.get('page')
+    jobs= p.get_page(page)
     context = {'jobs': jobs}
     return render(request, 'dashbaord/post-jobs.html', context)
 
@@ -33,25 +55,37 @@ def company(request):
     context = {'companys':companys, 'startups': startups}
     return render(request, 'dashbaord/company.html', context)
 
+@login_required
 def admin_index(request):
-    jobs = Job.objects.filter()
+    the_jobs = Job.objects.filter()
+    p = Paginator(the_jobs,2)
+    page = request.GET.get('page')
+    jobs= p.get_page(page)
     context = {'jobs': jobs}
     return render(request, 'admin_pages/review_jobs.html', context)
 
 def admin_view_users(request):
-    users = User.objects.filter()
+    the_users = User.objects.filter()
+    p = Paginator(the_users,4)
+    page = request.GET.get('page')
+    users= p.get_page(page)
     context = {'users': users}
-
     return render(request, 'admin_pages/user.html',context)
 
 
 def admin_reported_jobs(request):
-    reported_jobs = ReportedJob.objects.filter()
+    the_reported_jobs = ReportedJob.objects.filter().order_by('created_at')
+    p = Paginator(the_reported_jobs,2)
+    page = request.GET.get('page')
+    reported_jobs= p.get_page(page)
     context = {'reported_jobs': reported_jobs}
     return render(request, 'admin_pages/reported_jobs.html', context)
 
 def admin_jobs(request):
-    jobs = Job.objects.filter()
+    the_jobs = Job.objects.filter().order_by('-timestamp')
+    p = Paginator(the_jobs,2)
+    page = request.GET.get('page')
+    jobs= p.get_page(page)
     context = {'jobs': jobs}
     return render(request, 'admin_pages/review_jobs.html', context)
 
@@ -90,21 +124,15 @@ def admin_response(request, pk):
                        
 def block_users(request, pk):
     user = User.objects.get(pk=pk)
-    if user.is_active:
-        user.is_active = False
-        user.save()
-        return redirect('admin_users')
-    else:
-        messages.warning(request, f'user is already inactive')
-        return redirect('admin_users')
+    user.is_blocked = True
+    user.save()
+    return redirect('admin_users')
+    
 def unblock_users(request, pk):
     user = User.objects.get(pk=pk)
-    if user.is_active:
-        return redirect('admin_users')
-    else:
-        user.is_active = True
-        user.save()
-        return redirect('admin_users')
+    user.is_blocked = False
+    user.save()
+    return redirect('admin_users')
 
 
 def message_job(request, pk):
@@ -220,3 +248,9 @@ def notifications(request):
 
 
 
+
+#logout_admin
+def logout_admin(request):
+    logout(request)
+    messages.info(request, 'your session has ended')
+    return redirect('login')

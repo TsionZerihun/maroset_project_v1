@@ -31,8 +31,18 @@ def index(request):
     'filter_paginate':filter_paginate}
     return render(request, 'index/main.html', context)
 
+def about(request):
+    return render(request, 'index/about.html')
+
+def contact(request):
+    return render(request, 'index/contact.html')
+
+
 def job_list(request):
-    jobs = Job.objects.filter(is_available=True).order_by('-timestamp')
+    the_jobs = Job.objects.filter(is_available=True).order_by('-timestamp')
+    p = Paginator(the_jobs,2)
+    page = request.GET.get('page')
+    jobs= p.get_page(page)
     context = {'jobs': jobs}
     return render(request, 'index/job-list.html', context)
 
