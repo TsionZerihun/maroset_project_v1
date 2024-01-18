@@ -38,6 +38,8 @@ class ApplyJob(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
+    description = models.TextField(null=True, blank=True)
+
 
 class ConversationMessageJob(models.Model):
     job = models.ForeignKey(Job, related_name='conversationmessagejob', on_delete=models.CASCADE)

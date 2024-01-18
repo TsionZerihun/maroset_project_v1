@@ -1,0 +1,16 @@
+Pre-requist beofre selcting model 
+## First I tried to top ten check for highy ifnectiocus disesase which are Neglected or are emerging butnot given much attention
+    ## I found out that this 3 
+## I then check what option does ML provice to cure disase which was interstign to see I found out that Model could enhace drug discovery by the below option. Models can:
+    * Models can test the drug for 
+    * Provide drug recommendation for disease
+    * 
+
+
+
+I Use below Filtering strategy fro selection models
+    * Should preferable be <-2020
+    * Have free to use open source code 
+    * work with smiles notation when accepting molecules or drugs 
+    * Have a clear documentation 
+    * Model is not already included in the Erailia Model hub, model add request tab

@@ -7,7 +7,7 @@ from users.models import User
 #  company
 def create_company(request):
     if request.method == 'POST':
-        form = CreateCompanyForms(request.POST)
+        form = CreateCompanyForms(request.POST, request.FILES)
         if form.is_valid():
             var = form.save(commit=False)
             var.user = request.user
@@ -19,8 +19,7 @@ def create_company(request):
             user.save()
             return redirect('company')
         else:
-            messages.warning(request, 'something went wrong')
-            return redirect('company')
+            return redirect('index')
     else:
         form = CreateCompanyForms()
         context = {'form' : form}
@@ -65,12 +64,12 @@ def create_startup(request):
 def update_company(request, pk):
     company = Company.objects.get(pk=pk)
     if request.method == 'POST':
-        form = UpdateCompanyForms(request.POST, instance=company)
+        form = UpdateCompanyForms(request.POST, request.FILES, instance=company)
         if form.is_valid():
             form.save()
             return redirect('company')
         else:
-            messages.warning(request, '')
+            return redirect('update-company')
 
             
 
