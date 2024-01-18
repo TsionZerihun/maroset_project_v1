@@ -22,7 +22,7 @@ def dashbaord(request):
 
 @login_required
 def apply(request):
-    the_jobs = Job.objects.filter(is_available=True).order_by('-timestamp')
+    the_jobs = Job.objects.filter(job_status='Approved').order_by('-timestamp')
     p = Paginator(the_jobs,2)
     page = request.GET.get('page')
     jobs= p.get_page(page)
@@ -66,7 +66,7 @@ def admin_index(request):
 
 def admin_view_users(request):
     the_users = User.objects.filter()
-    p = Paginator(the_users,4)
+    p = Paginator(the_users,2)
     page = request.GET.get('page')
     users= p.get_page(page)
     context = {'users': users}

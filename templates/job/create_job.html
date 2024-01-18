@@ -12,7 +12,7 @@
       <!-- Start Title -->
       <div class="row mb-4">
         <div class="col-lg-8 mx-auto text-center">
-          <h1 class="display-4">Post a Job</h1>
+          <h1 class="display-4">Post a job</h1>
         </div>
       </div>
       <!-- End Title-->
@@ -32,34 +32,33 @@
                     <form method="POST" action="#">
                       {% csrf_token %}
                       <div class="form-group">
-                        <label for="Role">Select Starup name</label>
-                        {% render_field form.company class="form-control" placeholder="Leave empty is you want to select company instead"  %}
+                        <label for="Role">Select starup name</label>
+                        {% render_field form.startup class="form-control" placeholder="Leave empty is you want to select company instead"  %}
                       </div>
+
+                        
                     <div class="form-group">
-                      <label for="Role">Select Company name</label>
-                      {% render_field form.startup class="form-control" placeholder="Leave empty is you want to select company instead"  %}
+                      <label for="Role">Select company name</label>
+                      {% render_field form.company class="form-control" placeholder="Leave empty is you want to select startup instead"  %}
                   </div>
                      
                       <div class="form-group">
-                          <label for="Role">Title</label>
+                          <label for="Role">Job title</label>
                           {% render_field form.the_title class="form-control" placeholder="Title"  %}
                       </div>
-                      <div class="form-group">
-                        <label for="Role">Location</label>
-                        {% render_field form.location class="form-control" placeholder="location"  %}
-                    </div>
+                     
                     <div class="form-group">
                       <label for="Role">Salary</label>
-                      {% render_field form.salary class="form-control" placeholder="salary"  %}
+                      {% render_field form.salary class="form-control" placeholder="Salary"  %}
                   </div>
                   <div class="form-group">
                     <label for="Role">Description</label>
-                    {% render_field form.requirnment|attr:"rows:2" class="form-control" placeholder="description"  %}
+                    {% render_field form.requirnment|attr:"rows:2" class="form-control" placeholder="Description"  %}
                 </div>
               
               <div class="form-group">
-                <label for="Role">Ideal_candidate</label>
-                {% render_field form.idel_candidate|attr:"rows:2" class="form-control" placeholder="requirement"  %}
+                <label for="Role">Ideal candidate</label>
+                {% render_field form.idel_candidate|attr:"rows:2" class="form-control" placeholder="Requirement"  %}
             </div>
             <div class="form-group">
               <label for="Role">Catagory</label>

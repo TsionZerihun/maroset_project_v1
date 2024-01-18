@@ -3,7 +3,7 @@ from job.models import Job, ApplyJob,Indusrty
 from company.models import Company
 from .filter import Jobfilter
 from django.core.paginator import Paginator
-
+from job.form import ApplyJobsForm
 
 def index(request):
     filter = Jobfilter(request.GET, queryset=Job.objects.filter(is_available=True).order_by('-timestamp'))
@@ -47,10 +47,23 @@ def job_list(request):
     return render(request, 'index/job-list.html', context)
 
 def job_detail(request,pk):
+    user = request.user
     if ApplyJob.objects.filter(user=request.user, job=pk).exists():
         has_applied = True
     else:
         has_applied = False
     job = Job.objects.get(pk=pk)
-    context = {'job': job, 'has_applied': has_applied}
-    return render(request, 'index/job-detail.html', context)
+    if request.method == 'POST':
+        form = ApplyJobsForm(request.POST)
+        if form.is_valid():
+            var = form.save(commit=False)
+            var.job=job
+            var.user=user
+
+          
+            var.save()
+        return redirect ('dashboard') 
+    else:
+        form = ApplyJobsForm()
+        context = {'job': job, 'has_applied': has_applied, 'form':form}
+        return render(request, 'index/job-detail.html', context)

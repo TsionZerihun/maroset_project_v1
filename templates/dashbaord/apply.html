@@ -6,7 +6,7 @@
 {% if request.user.is_applicant %}
 {% if not request.user.has_resume %}
 <div class="alert alert-danger" role="alert">
-    <b>You need to create resume before applying to jobs. create one from <a href="{% url 'update-resume' %}">here</a></b>
+    <b>You need to create resume before applying to jobs. Create one from <a href="{% url 'update-resume' %}">here</a></b>
   </div>
   {% elif request.user.has_resume %}
 

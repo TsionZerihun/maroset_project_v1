@@ -78,13 +78,13 @@
                                 {% if notification.notification_type == 'message' %}
                                 <li>
                                 <a href="" class="dropdown-item">
-                                <strong>{{ notification.created_by.firstname }}</strong> new message</a>
+                                <strong>{{ notification.created_by.firstname }}</strong> New message</a>
                                  </li>
                                 {% elif notification.notification_type == 'application' %}
 
                                 <li>
                                 <a class="dropdown-item" href="#"> 
-                                <strong>{{ notification.created_by.username.firstname }}</strong> status update for job title ({{notification.jobname}} )</a>
+                                <strong>{{ notification.created_by.username.firstname }}</strong>Status update for job title ({{notification.jobname}} )</a>
 
                                 </li>
                                 {% endif %}
@@ -101,7 +101,7 @@
                             class="dropdown-menu dropdown-menu-end"
                             >
                                 <li>
-                                <a class="dropdown-item" href="{% url 'logout' %}">log out</a>
+                                <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
                                 </li>
                           
                                 <li>
@@ -208,7 +208,6 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <span class="h6 font-semibold text-muted text-sm d-block mb-2">favorite jobs</span>
                                         <span class="h3 font-bold mb-0">Applied Jobs</span>
                                     </div>
                                     <div class="col-auto">

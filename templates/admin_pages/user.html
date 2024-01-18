@@ -4,12 +4,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="title-5 m-b-35">user detail</h3>
+                <h3 class="title-5 m-b-35">User Detail</h3>
                 <div class="table-data__tool">
                   
                     <div class="table-data__tool-right">
                         <button class="au-btn au-btn-icon au-btn--blue au-btn--small">
-                            <i class=""></i>ADD/REMOVE USERS FROM BLOCKLIST</button>
+                            Add/Remove users from blocklist
                             <button class="au-btn au-btn-icon au-btn--green au-btn--small">
                     </div>
                 </div>
@@ -17,16 +17,9 @@
                     <table class="table table-data2">
                         <thead>
                             <tr>
-                                <th>
-                                    <label class="au-checkbox">
-                                        <input type="checkbox">
-                                        <span class="au-checkmark"></span>
-                                    </label>
-                                </th>
-                                <th>name</th>
-                                <th>email</th>
-                                <th>date</th>
-                                <th>status</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Status</th>
                                 <th>Action</th>
 
                                 <th></th>
@@ -36,17 +29,11 @@
                             {% for user in users %}
                             {% if not user.is_superuser %}
                             <tr class="tr-shadow">
-                                <td>
-                                    <label class="au-checkbox">
-                                        <input type="checkbox">
-                                        <span class="au-checkmark"></span>
-                                    </label>
-                                </td>
+                             
                                 <td>{{user.resume.first_name}}</td>
                                 <td>
                                     <span class="block-email">{{user.email}}</span>
                                 </td>
-                                <td>2018-09-27 02:12</td>
                                 <td>
                                     {% if not user.is_blocked == True %}
                                     <span class="status--process">Active
@@ -76,20 +63,20 @@
                     </table>
                         <div class="pagination">
                             <span class="step-links">
-                                {% if jobs.has_previous %}
+                                {% if users.has_previous %}
                                     <a href="?page=1">&laquo; First</a>
-                                    <a href="?page={{ jobs.previous_page_number }}">&laquo; Previous</a>
+                                    <a href="?page={{ users.previous_page_number }}">&laquo; Previous</a>
                                 {% endif %}
                     
                                 
                             </span class="current">
-                                Page {{ jobs.number }} of {{ jobs.paginator.num_pages }}
+                                Page {{ users.number }} of {{ users.paginator.num_pages }}
                             </span>
                     
                     
-                                {% if jobs.has_next %}
-                                <a href="?page={{ jobs.next_page_number }}">&raquo; Next</a>
-                                <a href="?page={{ jobs.paginator.num_pages }}">Last</a>
+                                {% if users.has_next %}
+                                <a href="?page={{ users.next_page_number }}">&raquo; Next</a>
+                                <a href="?page={{ users.paginator.num_pages }}">Last</a>
                                 {% endif %}
                             </span>
                           </div>

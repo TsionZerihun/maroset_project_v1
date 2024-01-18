@@ -1,6 +1,7 @@
 {% extends 'index/base.html' %}
 {% load humanize %}
 {% block content %}
+{% load widget_tweaks %}
  <!-- Job Detail Start -->
  <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div class="container">
@@ -22,20 +23,31 @@
                 </div>
 
                 <div class="">
-                    <h4 class="mb-4">Apply For The Job</h4>
-                    <form>
+                   
                         <div class="row g-3">
                            
                            
                             <div class="col-12">
                                 {% if has_applied == False %}
-                                <a  href="{% url 'apply-to-job' job.pk %}" class="btn btn-secondary w-100">Apply Now</a>
+                                <form method="POST" action="#">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                <label for="Role">To ensure a smooth and efficient application process, please write a brief cover letter introducing yourself and explaining why you are interested in this remote job vacancy. Highlight your relevant skills, experiences, and what makes you a strong candidate. Feel free to mention any remote work experience or your ability to work independently.</label>
+                                {% render_field form.description class="form-control" placeholder=""  %}
+                            </div>
+
+                                <button class="btn btn-secondary w-100">Apply Now</button>
+
+                        </form>
+
+
+                                <!--<a  href="{% url 'apply-to-job' job.pk %}" class="btn btn-secondary w-100">Apply Now</a>-->
                                 {% else %}
+
                                 <p><span class="text-danger">You have already applied for this job</span></p>
                                 {% endif %}
                             </div>
                         </div>
-                    </form>
                 </div>
             </div>
 

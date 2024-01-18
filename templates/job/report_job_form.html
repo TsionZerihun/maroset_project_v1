@@ -33,7 +33,7 @@
                       {% csrf_token %}
                 
                   <div class="form-group">
-                    <label for="Role">Tell us why are want to report this job</label>
+                    <label for="Role">Tell us why you want to report this job</label>
                     {% render_field form.description class="form-control" placeholder="Requirement"  %}
                 </div>
               
@@ -53,7 +53,7 @@
                   <!--end-general-->
 
             {% else %}
-            <h5><span class="text-success">You have already reported this job. Thank you for the feedbacks!!</span></h5>
+            <h5><span class="text-success">You have already reported this job. Thank you for your feedbacks!!</span></h5>
             {% endif %}
 
 
