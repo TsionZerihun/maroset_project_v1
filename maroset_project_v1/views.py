@@ -6,7 +6,7 @@ from django.core.paginator import Paginator
 from job.form import ApplyJobsForm
 
 def index(request):
-    filter = Jobfilter(request.GET, queryset=Job.objects.filter(is_available=True).order_by('-timestamp'))
+    filter = Jobfilter(request.GET, queryset=Job.objects.filter(job_status='Approved').order_by('-timestamp'))
     p = Paginator(filter.qs,2)
     page = request.GET.get('page')
     filter_paginate = p.get_page(page)
@@ -39,7 +39,7 @@ def contact(request):
 
 
 def job_list(request):
-    the_jobs = Job.objects.filter(is_available=True).order_by('-timestamp')
+    the_jobs = Job.objects.filter(job_status='Approved').order_by('-timestamp')
     p = Paginator(the_jobs,2)
     page = request.GET.get('page')
     jobs= p.get_page(page)
