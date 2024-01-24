@@ -13,3 +13,20 @@ body {
   .nav-pills .nav-link.active {
     color: #fff;
   }
+
+  field-label {
+    font-weight: normal;
+}
+.field-helptext {
+    font-size: 12px;
+}
+.field-error {
+    font-size: 14px;
+    color: red;
+}
+.field-required {
+    font-weight: bold;
+}
+.field-required:after {
+    content: " *";
+}

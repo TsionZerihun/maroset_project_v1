@@ -76,7 +76,7 @@
                         <div class="form-group">
                           <label for="Role">University/Qulalification Description</label>
                           {% render_field form.university_description class="form-control" placeholder="Description"  %}
-                        </div>
+                        </div>                        
                       
                   
                     <h1>Experience Information</h1>
@@ -113,6 +113,18 @@
                       <label for="Role">Upload Resume</label>
                       {% render_field form.upload_resume class="form-control" placeholder="Description"  %}
                     </div>
+                    {% for field in toolForm %}
+                    <tr>
+                      <th>
+                          <label class="field-label{% if field.field.required %} field-required{% endif %}" for="{{ field.name }}">{{ field.label }}</label>
+                      </th>
+                      <td>
+                          {% if field.errors %}<span class="field-error">{{ field.errors }}</span>{% endif %}
+                          {{ field }}<br/>
+                          {% if field.help_text %}<span class="field-helptext">{{ field.help_text|safe }}</span>{% endif %}
+                      </td>
+                    </tr>
+                  {% endfor %}
                    
 
 
