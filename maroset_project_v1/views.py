@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from job.models import Job, ApplyJob,Indusrty
+from job.models import Job, ApplyJob,Industry
 from company.models import Company
 from .filter import Jobfilter
 from django.core.paginator import Paginator

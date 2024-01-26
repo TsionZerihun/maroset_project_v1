@@ -11,21 +11,30 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from pathlib import Path
+import dotenv
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+'''dotenv_file = os.path.join(BASE_DIR, ".env")
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)'''
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+#SECRET_KEY = os.environ['SECRET_KEY']
 SECRET_KEY = 'django-insecure-j(fy*c^r7ot6h1l661-n#ku_c0akiyy*cptwy7tl$&q=ocun*b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
+
 
 
 # Application definition
@@ -89,11 +98,12 @@ WSGI_APPLICATION = 'maroset_project_v1.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'jobportal',
-        'USER':'postgres',
-        'PASSWORD':'Password',
-        'HOST':'localhost',
-        'PORT':'5432',
+        'NAME': 'postgres',
+        'USER':'postgres.hxoqpdkkwsosqzsqphon',
+        'PASSWORD':'TaFNp(~eLccs/67',
+        'HOST':'aws-0-eu-central-1.pooler.supabase.com',
+        'PORT':'6543',
+        'DISABLE_SERVER_SIDE_CURSORS': True,
     }
 }
 

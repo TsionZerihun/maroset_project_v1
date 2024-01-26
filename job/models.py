@@ -2,7 +2,7 @@ from django.db import models
 from users.models import User
 from company.models import Company,Startup
 
-class Indusrty(models.Model):
+class Industry(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
@@ -24,7 +24,7 @@ class Job(models.Model):
     idel_candidate = models.TextField(null=True, blank=True)
     is_available = models.BooleanField(default=True)
     timestamp = models.DateTimeField(auto_now_add=True)
-    industry = models.ForeignKey(Indusrty, on_delete=models.DO_NOTHING, null=True, blank=True)
+    industry = models.ForeignKey(Industry, on_delete=models.DO_NOTHING, null=True, blank=True)
     job_status = models.CharField(max_length=20, default='Pending', choices=job_status_choices, null=True, blank=True)
     admin_comment = models.TextField(null=True, blank=True)
     is_reported = models.BooleanField(default=False)

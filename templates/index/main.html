@@ -130,7 +130,8 @@
                                 {% render_field filter.form.the_title class="form-control" placeholder="Keyword" %}
                             </div>
                             <div class="col-md-4">
-                                {% render_field filter.form.industry class="form-select"  placeholder="Keyword" %}
+                                {% render_field filter.form.industry class="form-control" placeholder="Keyword" %}
+
                             </div>
                             
                             <div class="col-md-2">
@@ -157,7 +158,7 @@
                             <div class="row g-4">
                                 <div class="col-sm-12 col-md-8 d-flex align-items-center">
                                     <div class="text-start ps-4">
-                                        <h5 class="mb-3">{{job}}</h5>
+                                        <h5 class="mb-3">{{job.the_title}}</h5>
                                         <span class="text-truncate me-3"><i class="far fa-clock text-secondary me-2"></i>Full Time</span>
                                         <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-secondary me-2"></i>{{job.salary}} ETB</span>
                                         <span class="text-truncate me-0"><i class=" text-secondary me-2"></i>Company: {{job.company.name}}</span>
