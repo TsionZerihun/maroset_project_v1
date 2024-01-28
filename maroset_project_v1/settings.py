@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
+import dj_database_url
 import os
 from pathlib import Path
 import dotenv
@@ -26,14 +27,14 @@ if os.path.isfile(dotenv_file):
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = os.environ.get('SECRET_KEY')
 #SECRET_KEY = 'django-insecure-j(fy*c^r7ot6h1l661-n#ku_c0akiyy*cptwy7tl$&q=ocun*b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
-#ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
+#ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app','*']
 
 
 
@@ -107,6 +108,12 @@ DATABASES = {
     }
 }
 
+database_url = os.environ.get("DATABASE_URL")
+#DATABASES['default'] = dj_database_url.parse("postgres://maroset:grdV7w3AicrFYfHzsvjm46KM8cGI2LgH@dpg-cmr2gn21hbls73fmr7j0-a.oregon-postgres.render.com/maroset")
+DATABASES['default'] = dj_database_url.parse("database_url")
+
+#postgres://maroset:grdV7w3AicrFYfHzsvjm46KM8cGI2LgH@dpg-cmr2gn21hbls73fmr7j0-a/maroset
+
 #DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.sqlite3',
@@ -151,7 +158,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
-
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
