@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: maroset_project_v1
+    buildCommand: "./build.sh"
+    env: python
+    startCommand: "maroset_project_v1.wsgi:application"
