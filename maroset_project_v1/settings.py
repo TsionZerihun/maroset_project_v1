@@ -105,10 +105,18 @@ DATABASES = {
         
     }
 }
-
+''' uncomment for render
 database_url = os.environ.get("DATABASE_URL")
 #DATABASES['default'] = dj_database_url.parse("postn-postgres.render.com/maroset")
 DATABASES['default'] = dj_database_url.parse(database_url)
+'''
+
+#comment for render
+database_url = "postgres://maroset:grdV7w3AicrFYfHzsvjm46KM8cGI2LgH@dpg-cmr2gn21hbls73fmr7j0-a.oregon-postgres.render.com/maroset"
+
+#DATABASES['default'] = dj_database_url.parse("postn-postgres.render.com/maroset")
+DATABASES['default'] = dj_database_url.parse(database_url)
+#upto here
 
 #postgres://maroset:grdV7w3AicrFYfHzsvjm46KM8cGI2LgH@dpg-cmr2gn21hbls73fmr7j0-a/maroset
 
