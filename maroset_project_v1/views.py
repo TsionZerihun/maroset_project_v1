@@ -37,6 +37,8 @@ def about(request):
 def contact(request):
     return render(request, 'index/contact.html')
 
+def terms(request):
+    return render(request, 'index/terms.html')
 
 def job_list(request):
     the_jobs = Job.objects.filter(job_status='Approved').order_by('-timestamp')

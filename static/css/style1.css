@@ -1,4 +1,26 @@
 /********** Template CSS **********/
+
+.font-5{
+    font-size: 15px;
+
+}
+
+.width75{
+    width: 75%;
+}
+.bg-white{
+    background-color: white;
+}
+
+h1.maroset-text{
+    color: rgb(42 169 207);
+}
+
+.black-text{
+    color: rgb(42 169 207);
+}
+
+
 :root {
     --primary: #00B074;
     --secondary: #38B6FF;
@@ -249,9 +271,15 @@
     background-size: cover;
 }
 
-.breadcrumb-item + .breadcrumb-item::before {
-    color: var(--light);
+.page-header-noimg {
+    background-size: cover;
 }
+
+.breadcrumb-item + .breadcrumb-item::before {
+    
+    color: #1db8db;
+}
+
 
 
 /*** About ***/
