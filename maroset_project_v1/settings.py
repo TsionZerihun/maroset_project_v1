@@ -114,7 +114,8 @@ DATABASES['default'] = dj_database_url.parse(database_url)
 '''
 
 #comment for render
-database_url = "postgres://maroset:grdV7w3AicrFYfHzsvjm46KM8cGI2LgH@dpg-cmr2gn21hbls73fmr7j0-a.oregon-postgres.render.com/maroset"
+#database_url = "postgres://maroset:grdV7w3AicrFYfHzsvjm46KM8cGI2LgH@dpg-cmr2gn21hbls73fmr7j0-a.oregon-postgres.render.com/maroset"
+database_url = "postgres://maroset_ivjx_user:k4BFiMLPyigecDae9GHyIz5MFGzZ1ujB@dpg-cpc4rpm3e1ms739fedog-a.oregon-postgres.render.com/maroset_ivjx"
 
 #DATABASES['default'] = dj_database_url.parse("postn-postgres.render.com/maroset")
 DATABASES['default'] = dj_database_url.parse(database_url)
