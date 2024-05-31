@@ -1,6 +1,8 @@
 # Maroset Project v1
 
 Welcome to the Maroset Project v1 repository! This Project is designed to serve as a comprehensive platform for job seekers and employers. By providing features for job postings, applications, and administrative oversight, it aims to simplify the job search and hiring process. The platform ensures that users can easily create and manage job postings, apply for jobs, and report issues, while administrators can effectively manage and moderate the content.
+- https://maroset.com/
+- https://maroset-1etk.onrender.com/
 
 # Maroset Project v1: Key Functionalities
 
