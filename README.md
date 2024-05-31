@@ -1,6 +1,42 @@
 # Maroset Project v1
 
-Welcome to the Maroset Project v1 repository! This project is designed to [provide a brief description of the project's purpose and functionality].
+Welcome to the Maroset Project v1 repository! This Project is designed to serve as a comprehensive platform for job seekers and employers. By providing features for job postings, applications, and administrative oversight, it aims to simplify the job search and hiring process. The platform ensures that users can easily create and manage job postings, apply for jobs, and report issues, while administrators can effectively manage and moderate the content.
+
+# Maroset Project v1: Key Functionalities
+
+## User Registration and Authentication
+- **Register**: Create a new user account.
+- **Login**: Access an existing user account.
+- **Logout**: Sign out of the user account.
+  
+![image](https://github.com/TsionZerihun/maroset_project_v1/assets/101357449/83e16a5d-1cc1-47d4-ac59-6fbd4e4abf59)
+
+
+## User Profile Management
+- **View Profile**: Display user profile details.
+- **Update Profile**: Edit and update user profile information.
+  
+![image](https://github.com/TsionZerihun/maroset_project_v1/assets/101357449/6762807f-f5ff-49c7-9cfc-b1b2fdb2f7b3)
+
+
+## Job Postings Management
+- **Create Job Posting**: Add new job listings.
+- **Update Job Posting**: Edit existing job listings.
+- **Admin Update Job Posting**: Administrators can edit any job listings.
+
+![image](https://github.com/TsionZerihun/maroset_project_v1/assets/101357449/3527f3c9-3ffc-4b16-833a-23506646bda8)
+
+
+## Job Applications
+- **Apply to Job**: Submit applications for job postings.
+- **View All Applicants**: Job owners can view applicants for their job postings.
+
+## Job Reporting
+- **Report Job Posting**: Flag job postings for review.
+- **View Report Reasons**: Admins can view reasons for reported jobs.
+- **About Reported Job**: Admins can access detailed information on reported jobs.
+  ![image](https://github.com/TsionZerihun/maroset_project_v1/assets/101357449/3b5249ff-df57-45f2-a4b2-d05e1ff38937)
+
 
 ## Table of Contents
 - [Installation](#installation)
