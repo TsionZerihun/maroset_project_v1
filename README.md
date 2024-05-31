@@ -7,7 +7,7 @@ Welcome to the Maroset Project v1 repository! This project is designed to [provi
 - [Usage](#usage)
 - [Features](#features)
 - [Folder Structure](#folder-structure)
-- 
+- [Contact](#contact)
 
 ## Installation
 
@@ -91,3 +91,10 @@ maroset_project_v1/
 3. **Install dependencies**:
    ```bash
    pip install -r requirements.txt
+   ```
+
+#### If you have any questions or feedback, feel free to contact me:
+
+- Email: tsionzelekezerihun@gmail.com
+- LinkedIn: [LinkedIn Profile](https://www.linkedin.com/in/tsion-zeleke/)
+- GitHub: [TsionZerihun](https://github.com/TsionZerihun)
